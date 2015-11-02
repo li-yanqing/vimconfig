@@ -48,7 +48,6 @@ Plugin 'xml.vim'
 Plugin 'The-NERD-Commenter'
 Plugin 'luochen1990/rainbow'
 
-Plugin 'Gundo'
 
 Plugin 'mikelue/vim-maven-plugin'
 
@@ -94,13 +93,9 @@ set ai "auto align
 set sw=4 "tab length
 syntax on 
 set textwidth=0 "maxlength of line
-set conceallevel=2 "for json format
 set autoread "auto load file change
 
 set nobackup "don't backup file
-set undofile  "Open Persistent Undo
-set undodir=$HOME/\_undodir
-set undolevels=1000  "how many operation could be undone
 
 set tabstop=4 "tab to space
 set expandtab
@@ -216,9 +211,6 @@ set number
 " highlight search result
 set hlsearch
 
-"Gundo
-set undofile
-set undodir=$HOME/\_undo_history/
 
 
 
