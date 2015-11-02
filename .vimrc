@@ -35,8 +35,6 @@ Plugin 'L9'
 Plugin 'VOoM'
 Plugin 'jsbeautify'
 Plugin 'surround.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'aquach/vim-http-client'
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'VisIncr'
