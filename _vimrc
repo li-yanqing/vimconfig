@@ -110,26 +110,26 @@ let mapleader = ","
 set nu
 set fileencodings=utf-8,gbk
 set nowrap
-set sm "sm»áÔÚÄãÇÃ},]»ò)ÏÔÊ¾³ö¶ÔÓ¦Æ¥ÅäµÄ{,[»ò(À´
-set ai "×Ô¶¯¶ÔÆë
-set sw=4 "ÉèÖÃTab¿í¶È
-syntax on "Óï·¨¼ÓÁÁ
-set textwidth=0 "ÉèÖÃÃ¿ĞĞ×î´ó¿í¶È
-set conceallevel=2 "ÉèÖÃJSONµÄÓÅ»¯ÏÔÊ¾·½Ê½
-set autoread "ÉèÖÃ×Ô¶¯¼ÓÔØÎÄ¼ş±ä¸ü
+set sm "smä¼šåœ¨ä½ æ•²},]æˆ–)æ˜¾ç¤ºå‡ºå¯¹åº”åŒ¹é…çš„{,[æˆ–(æ¥
+set ai "è‡ªåŠ¨å¯¹é½
+set sw=4 "è®¾ç½®Tabå®½åº¦
+syntax on "è¯­æ³•åŠ äº®
+set textwidth=0 "è®¾ç½®æ¯è¡Œæœ€å¤§å®½åº¦
+set conceallevel=2 "è®¾ç½®JSONçš„ä¼˜åŒ–æ˜¾ç¤ºæ–¹å¼
+set autoread "è®¾ç½®è‡ªåŠ¨åŠ è½½æ–‡ä»¶å˜æ›´
 
-set nobackup "²»±¸·İ
+set nobackup "ä¸å¤‡ä»½
 set undofile  "Open Persistent Undo
 set undodir=$HOME/\_undodir
 set undolevels=1000  "how many operation could be undone
 
-set tabstop=4 "tab->¿Õ¸ñ
+set tabstop=4 "tab->ç©ºæ ¼
 set expandtab
 set linespace=1
 set ve=all
-"set autochdir  "×Ô¶¯ÇĞ»»µ½µ±Ç°BufÄ¿Â¼ÏÂ
+"set autochdir  "è‡ªåŠ¨åˆ‡æ¢åˆ°å½“å‰Bufç›®å½•ä¸‹
 set guifont=YaHei\ Consolas\ Hybrid:h11
-"ÕæµÄºÜsmart, ËÑË÷Ê±È«Ğ¡Ğ´Ïàµ±ÓÚ²»Çø·Ö´óĞ¡Ğ´£¬Ö»ÒªÓĞÒ»¸ö´óĞ´×ÖÄ¸³öÏÖ£¬ÔòÇø·Ö´óĞ¡Ğ´
+"çœŸçš„å¾ˆsmart, æœç´¢æ—¶å…¨å°å†™ç›¸å½“äºä¸åŒºåˆ†å¤§å°å†™ï¼Œåªè¦æœ‰ä¸€ä¸ªå¤§å†™å­—æ¯å‡ºç°ï¼Œåˆ™åŒºåˆ†å¤§å°å†™
 set ignorecase smartcase
 
 "auto change dir to current dir
@@ -205,46 +205,46 @@ nmap <c-down> <c-w>-
 
 
 
-"ÑÕÉ«Ö÷Ìâ
+"é¢œè‰²ä¸»é¢˜
 "colorscheme desert
 "colorscheme desertEx
 colorscheme desert256 
 
-"½çÃæ
-"set guioptions-=T "¹¤¾ßÌõ
-"set guioptions+=m "²Ëµ¥
+"ç•Œé¢
+"set guioptions-=T "å·¥å…·æ¡
+"set guioptions+=m "èœå•
 "set guioptions+=e "Tab line
 set guioptions-=e "Tab line
-"set guioptions+=b "µ×²¿¹ö¶¯Ìõ
-" ½ûÖ¹¹â±êÉÁË¸
+"set guioptions+=b "åº•éƒ¨æ»šåŠ¨æ¡
+" ç¦æ­¢å…‰æ ‡é—ªçƒ
 "set gcr=a:block-blinkon0
 
 
-" ½ûÖ¹ÏÔÊ¾¹ö¶¯Ìõ
+" ç¦æ­¢æ˜¾ç¤ºæ»šåŠ¨æ¡
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
 set guioptions-=R
-" ½ûÖ¹ÏÔÊ¾²Ëµ¥ºÍ¹¤¾ßÌõ
+" ç¦æ­¢æ˜¾ç¤ºèœå•å’Œå·¥å…·æ¡
 set guioptions-=m
 set guioptions-=T
 
-" ×ÜÊÇÏÔÊ¾×´Ì¬À¸
+" æ€»æ˜¯æ˜¾ç¤ºçŠ¶æ€æ 
 set laststatus=2
-" ÏÔÊ¾¹â±êµ±Ç°Î»ÖÃ
+" æ˜¾ç¤ºå…‰æ ‡å½“å‰ä½ç½®
 set ruler
-" ¿ªÆôĞĞºÅÏÔÊ¾
+" å¼€å¯è¡Œå·æ˜¾ç¤º
 set number
-" ¸ßÁÁÏÔÊ¾µ±Ç°ĞĞ/ÁĞ
+" é«˜äº®æ˜¾ç¤ºå½“å‰è¡Œ/åˆ—
 "set cursorline
 "set cursorcolumn
-" ¸ßÁÁÏÔÊ¾ËÑË÷½á¹û
+" é«˜äº®æ˜¾ç¤ºæœç´¢ç»“æœ
 set hlsearch
 
 "Gundo
-" ¿ªÆô±£´æ undo ÀúÊ·¹¦ÄÜ
+" å¼€å¯ä¿å­˜ undo å†å²åŠŸèƒ½
 set undofile
-" undo ÀúÊ·±£´æÂ·¾¶
+" undo å†å²ä¿å­˜è·¯å¾„
 set undodir=$HOME/\_undo_history/
 
 
@@ -344,8 +344,8 @@ endfunction
 
 "Rooter 
 let g:rooter_use_lcd = 1 " local buffer change 
-let g:rooter_silent_chdir = 1 "ÇĞ»»ºó²»ÌáÊ¾
-let g:rooter_manual_only = 0 "ÊÇ·ñ×Ô¶¯ÇĞ»»µ½¸ùÄ¿Â¼ÏÂ
+let g:rooter_silent_chdir = 1 "åˆ‡æ¢åä¸æç¤º
+let g:rooter_manual_only = 0 "æ˜¯å¦è‡ªåŠ¨åˆ‡æ¢åˆ°æ ¹ç›®å½•ä¸‹
 map <silent> <Leader>cd <Plug>RooterChangeToRootDirectory
 
 "YankRing
