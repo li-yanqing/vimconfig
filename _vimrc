@@ -110,26 +110,25 @@ let mapleader = ","
 set nu
 set fileencodings=utf-8,gbk
 set nowrap
-set sm "sm会在你敲},]或)显示出对应匹配的{,[或(来
-set ai "自动对齐
-set sw=4 "设置Tab宽度
-syntax on "语法加亮
-set textwidth=0 "设置每行最大宽度
-set conceallevel=2 "设置JSON的优化显示方式
-set autoread "设置自动加载文件变更
+set sm "match the { or ( or [
+set ai "auto align
+set sw=4 "tab length
+syntax on 
+set textwidth=0 "maxlength of line
+set conceallevel=2 "for json format
+set autoread "auto load file change
 
-set nobackup "不备份
+set nobackup "don't backup file
 set undofile  "Open Persistent Undo
 set undodir=$HOME/\_undodir
 set undolevels=1000  "how many operation could be undone
 
-set tabstop=4 "tab->空格
+set tabstop=4 "tab to space
 set expandtab
 set linespace=1
 set ve=all
-"set autochdir  "自动切换到当前Buf目录下
+set autochdir  "auto change to current folder
 set guifont=YaHei\ Consolas\ Hybrid:h11
-"真的很smart, 搜索时全小写相当于不区分大小写，只要有一个大写字母出现，则区分大小写
 set ignorecase smartcase
 
 "auto change dir to current dir
@@ -205,46 +204,41 @@ nmap <c-down> <c-w>-
 
 
 
-"颜色主题
+"color scheme
 "colorscheme desert
 "colorscheme desertEx
 colorscheme desert256 
 
-"界面
-"set guioptions-=T "工具条
-"set guioptions+=m "菜单
+"for interface
+"set guioptions-=T "tool bar
+"set guioptions+=m "menu
 "set guioptions+=e "Tab line
 set guioptions-=e "Tab line
-"set guioptions+=b "底部滚动条
-" 禁止光标闪烁
-"set gcr=a:block-blinkon0
+"set guioptions+=b "bottom splide
 
 
-" 禁止显示滚动条
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
 set guioptions-=R
-" 禁止显示菜单和工具条
+" not menu and bar
 set guioptions-=m
 set guioptions-=T
 
-" 总是显示状态栏
+" show status always
 set laststatus=2
-" 显示光标当前位置
+" show current cursors
 set ruler
-" 开启行号显示
+" show line number
 set number
-" 高亮显示当前行/列
+" highlight current line
 "set cursorline
 "set cursorcolumn
-" 高亮显示搜索结果
+" highlight search result
 set hlsearch
 
 "Gundo
-" 开启保存 undo 历史功能
 set undofile
-" undo 历史保存路径
 set undodir=$HOME/\_undo_history/
 
 
@@ -344,8 +338,8 @@ endfunction
 
 "Rooter 
 let g:rooter_use_lcd = 1 " local buffer change 
-let g:rooter_silent_chdir = 1 "切换后不提示
-let g:rooter_manual_only = 0 "是否自动切换到根目录下
+let g:rooter_silent_chdir = 1 "quietly change dir
+let g:rooter_manual_only = 0 "don't auto change to root directory
 map <silent> <Leader>cd <Plug>RooterChangeToRootDirectory
 
 "YankRing
