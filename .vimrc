@@ -14,7 +14,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 """----------------------------------------------------------------------------------------
 Plugin 'SuperTab'
-"Plugin 'EasyGrep'
+Plugin 'EasyGrep'
 Plugin 'VimExplorer'
 Plugin 'quickrun.vim'
 
@@ -177,7 +177,7 @@ nmap <c-down> <c-w>-
 
 
 "color scheme
-"colorscheme desert
+colorscheme desert
 "colorscheme desertEx
 "colorscheme desert256 
 
