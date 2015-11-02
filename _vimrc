@@ -10,7 +10,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 """----------------------------------------------------------------------------------------
 Plugin 'SuperTab'
-Plugin 'EasyGrep'
+"Plugin 'EasyGrep'
 Plugin 'VimExplorer'
 Plugin 'mru.vim'
 Plugin 'quickrun.vim'
@@ -28,6 +28,9 @@ Plugin 'matchit.zip'
 Plugin 'EasyMotion'
 
 Plugin 'terryma/vim-multiple-cursors'
+
+Plugin 'rking/ag.vim'
+
 "Plugin 'AutoClose'
 Plugin 'vim-easy-align'
 Plugin 'HTML-AutoCloseTag'
@@ -79,6 +82,8 @@ Plugin 'luochen1990/select-and-search'
 Plugin 'Mark'
 
 
+
+
 "color
 Plugin 'dw_colors'
 Plugin 'Color-Sampler-Pack'
@@ -127,6 +132,8 @@ set guifont=YaHei\ Consolas\ Hybrid:h11
 "真的很smart, 搜索时全小写相当于不区分大小写，只要有一个大写字母出现，则区分大小写
 set ignorecase smartcase
 
+"auto change dir to current dir
+au BufRead,BufNewFile * cd %:p:h
 
 
 ""map <F5> <Esc>:tabnew<cr>
@@ -135,6 +142,11 @@ set ignorecase smartcase
 ""map <F3> <Esc>:tabnext<cr>
 
 "custome operation{{{
+
+"Disable q:
+map q: <Nop>
+
+
 nnoremap mx <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
 noremap <Leader>q <Esc>:q<cr>
 noremap <Leader>Q <Esc>:q!<cr>
@@ -170,7 +182,8 @@ nnoremap ;;m <Esc>:set guioptions-=m<cr>
 "nmap gc V,r<c-h>:4<cr>f{i<cr><esc>Vy<c-l>p  
 "nmap gc V,r<c-h>:3<cr>f{i<cr><esc>V,,fj
 "nmap gc 10I#<esc>yss"Iecho <esc>
-nmap gc V,r<c-h>V,,fj<esc>
+"nmap gc V,r<c-h>V,,fj<esc>
+nmap gc V,r
 
 "unused keys
 map ZZ <nop>
@@ -237,17 +250,24 @@ set undodir=$HOME/\_undo_history/
 
 
 "Ag
-"if executable('ag')
-  "" Use Ag over Grep
-  "set grepprg=ag\ --nogroup\ --nocolor
-  "" Use ag in CtrlP for listing files.
-  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  "" Ag is fast enough that CtrlP doesn't need to cache
-  "let g:ctrlp_use_caching = 0
-"endif
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+"configure ag.vim to always start searching from your project root instead of the cwd
+let g:ag_prg="ag --vimgrep --smart-case"
+let g:ag_working_path_mode="r"
+nnoremap <Leader>vv  <Esc>:Ag <cword><cr>
 
 
 
+
+
+"EasyGrep
+"let g:EasyGrepRecursive = 1
+"let g:EasyGrepOpenWindowOnMatch=0
+"let g:EasyGrepFilesToExclude = "*.class, *.jar, *.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
+"let g:EasyGrepCommand=1
 
 
 
@@ -376,6 +396,8 @@ map <Leader>zd <Esc>:DisablePHPFolds<Cr>
 noremap mm <Esc>:CtrlPMRU<cr>
 noremap mf <Esc>:CtrlP<cr>
 let g:ctrlp_clear_cache_on_exit=0
+"let g:ctrlp_user_command = 'ag %s -l --nocolor -g -Q ""'
+"let g:ctrlp_use_caching = 0
 
 "set wildignore=*.o,*.obj
 let g:ctrlp_by_filename = 1
@@ -545,4 +567,5 @@ function! MyDiff()
     let &shellxquote=l:shxq_sav
   endif
 endfunction
+
 
