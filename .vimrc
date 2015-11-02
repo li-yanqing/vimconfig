@@ -179,7 +179,7 @@ nmap <c-down> <c-w>-
 "color scheme
 "colorscheme desert
 "colorscheme desertEx
-colorscheme desert256 
+"colorscheme desert256 
 
 "for interface
 "set guioptions-=T "tool bar
