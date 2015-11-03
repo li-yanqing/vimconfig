@@ -27,7 +27,7 @@ Plugin 'matchit.zip'
 "Plugin 'YankRing.vim'
 Plugin 'EasyMotion'
 
-Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'rking/ag.vim'
 
@@ -110,7 +110,10 @@ let mapleader = ","
 set nu
 set fileencodings=utf-8,gbk
 set nowrap
-set noswapfile
+autocmd BufReadPost * set noswapfile
+
+set directory=$TEMP
+
 set sm "match the { or ( or [
 set ai "auto align
 set sw=4 "tab length
