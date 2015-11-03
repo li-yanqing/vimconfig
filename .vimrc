@@ -19,7 +19,7 @@ Plugin 'VimExplorer'
 Plugin 'quickrun.vim'
 
 Plugin 'Shougo/neocomplete.vim'
-
+Plugin 'tpope/vim-fugitive'
 
 Plugin 'vim-airline'
 
