@@ -18,6 +18,8 @@ Plugin 'EasyGrep'
 Plugin 'VimExplorer'
 Plugin 'quickrun.vim'
 
+Plugin 'Shougo/neocomplete.vim'
+
 
 Plugin 'vim-airline'
 

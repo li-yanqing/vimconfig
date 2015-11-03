@@ -18,6 +18,8 @@ Plugin 'taglist.vim'
 Plugin 'vim-misc'
 Plugin 'phpcomplete.vim'
 
+Plugin 'Shougo/neocomplete.vim'
+
 
 Plugin 'vim-airline'
 "Plugin 'Lokaltog/vim-powerline' 
