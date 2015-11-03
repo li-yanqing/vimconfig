@@ -149,7 +149,7 @@ map q: <Nop>
 nnoremap mx <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
 noremap <Leader>q <Esc>:q<cr>
 noremap <Leader>Q <Esc>:q!<cr>
-map <C-t> <Esc>:tabnew<cr>
+map <C-n> <Esc>:tabnew<cr>
 map <C-u> <Esc>:tabnext<cr>
 map <C-y> <Esc>:tabprevious<cr>
 map <Leader><Leader>fj  !python -m json.tool<CR> 
