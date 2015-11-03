@@ -86,6 +86,7 @@ let mapleader = ","
 set nu
 set fileencodings=utf-8,gbk
 set nowrap
+set noswapfile
 set sm "match the { or ( or [
 set ai "auto align
 set sw=4 "tab length
