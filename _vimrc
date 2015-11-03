@@ -19,6 +19,7 @@ Plugin 'vim-misc'
 Plugin 'phpcomplete.vim'
 
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'tpope/vim-fugitive'
 
 
 Plugin 'vim-airline'
