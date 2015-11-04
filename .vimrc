@@ -128,8 +128,14 @@ noremap <Leader>Q <Esc>:q!<cr>
 map <C-n> <Esc>:tabnew<cr>
 map <C-u> <Esc>:tabnext<cr>
 map <C-y> <Esc>:tabprevious<cr>
-map <Leader><Leader>fj  !python -m json.tool<CR> 
-map <Leader><Leader>fx  !xmllint --format --recover - 2>/dev/null <CR> 
+"format json
+map <Leader><Leader>fj  !python -m json.tool<CR>
+"format xml
+map <Leader><Leader>fx  !xmllint --format --recover - 2>/dev/null <CR>
+
+"base64 encode
+map <Leader><Leader>be  !base64 <CR>
+map <Leader><Leader>bd  !base64 -d -i <CR>
 
 
 nnoremap <M-d> <c-f>
