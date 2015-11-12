@@ -85,8 +85,7 @@ Plugin 'Mark'
 Plugin 'itchyny/calendar.vim'
 Plugin 'itchyny/thumbnail.vim'
 
-
-Plugin 'vim-scripts/apachelogs.vim'
+Plugin 'tetsuo13/Vim-log4j'
 
 
 "color
