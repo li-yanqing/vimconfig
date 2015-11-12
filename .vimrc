@@ -65,7 +65,8 @@ Plugin 'luochen1990/select-and-search'
 Plugin 'Mark'
 
 
-Plugin 'tetsuo13/Vim-log4j'
+"filetype log(log4j) and javalog(java exception)
+Plugin 'sxinle/vim-log-syntax'
 
 
 "color
@@ -93,7 +94,7 @@ filetype plugin on
 let mapleader = ","
 set nu
 set fileencodings=utf-8,gbk
-set nowrap
+set wrap
 autocmd BufReadPost * set noswapfile
 
 set directory=$TEMP

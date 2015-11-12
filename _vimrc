@@ -85,7 +85,8 @@ Plugin 'Mark'
 Plugin 'itchyny/calendar.vim'
 Plugin 'itchyny/thumbnail.vim'
 
-Plugin 'tetsuo13/Vim-log4j'
+"filetype log(log4j) and javalog(java exception)
+Plugin 'sxinle/vim-log-syntax'
 
 
 "color
