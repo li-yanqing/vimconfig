@@ -24,6 +24,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline'
 
 Plugin 'matchit.zip'
+Plugin 'YankRing.vim'
 Plugin 'EasyMotion'
 
 "Plugin 'terryma/vim-multiple-cursors'
@@ -38,6 +39,10 @@ Plugin 'VOoM'
 Plugin 'jsbeautify'
 Plugin 'surround.vim'
 Plugin 'kien/ctrlp.vim'
+"Plugin 'Decho'
+"Plugin 'vimshell-ssh'    
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimproc.vim'
 
 Plugin 'VisIncr'
 Plugin 'auto_mkdir'
@@ -90,6 +95,8 @@ set fileencodings=utf-8,gbk
 set nowrap
 autocmd BufReadPost * set noswapfile
 
+set directory=$TEMP
+
 set sm "match the { or ( or [
 set ai "auto align
 set sw=4 "tab length
@@ -103,12 +110,12 @@ set tabstop=4 "tab to space
 set expandtab
 set linespace=1
 set ve=all
-set autochdir  "auto change to current folder
+"set autochdir  "auto change to current folder
 set guifont=YaHei\ Consolas\ Hybrid:h11
 set ignorecase smartcase
 
 "auto change dir to current dir
-au BufRead,BufNewFile * cd %:p:h
+"au BufRead,BufNewFile * cd %:p:h
 
 
 ""map <F5> <Esc>:tabnew<cr>
@@ -123,9 +130,13 @@ map q: <Nop>
 
 
 nnoremap mx <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
+map <c-F11> <C-W>_<C-W><Bar>
 noremap <Leader>q <Esc>:q<cr>
 noremap <Leader>Q <Esc>:q!<cr>
-map <C-n> <Esc>:tabnew<cr>
+
+
+
+map <C-t> <Esc>:tabnew<cr>
 map <C-u> <Esc>:tabnext<cr>
 map <C-y> <Esc>:tabprevious<cr>
 "format json
@@ -133,8 +144,12 @@ map <Leader><Leader>fj  !python -m json.tool<CR>
 "format xml
 map <Leader><Leader>fx  !xmllint --format --recover - 2>/dev/null <CR>
 
+"remove space 
+map <Leader><Leader>ks  s/\s\+/ /g<CR>
+map <Leader><Leader>kS  s/\s\+//g<CR>
+
 "base64 encode
-map <Leader><Leader>be  !base64 <CR>
+map <Leader><Leader>be  y<Esc>gv:!base64 <CR>kp
 map <Leader><Leader>bd  !base64 -d -i <CR>
 
 
@@ -153,12 +168,27 @@ vnoremap <Space> e
 "save file
 nnoremap <Leader>s <Esc>:w<cr>
 "wrap
-nnoremap ;w <Esc>:set wrap<cr>
-nnoremap ;;w <Esc>:set nowrap<cr>
+nnoremap ;w  :call ToggleWrap()<cr>
+function! ToggleWrap()
+    set wrap!
+    let wrap = &wrap
+    echo wrap
+    if(wrap)
+        noremap j gj
+        noremap k gk
+    else
+        unmap j
+        unmap k
+    endif
+endfunction
 
 "menu
 nnoremap ;m <Esc>:set guioptions+=m<cr>
 nnoremap ;;m <Esc>:set guioptions-=m<cr>
+
+"rainbow
+nnoremap ;r <Esc>:RainbowToggle<cr>
+
 
 "nmap gc V,r<c-h>:4<cr>f{i<cr><esc>Vy<c-l>p  
 "nmap gc V,r<c-h>:3<cr>f{i<cr><esc>V,,fj
@@ -230,26 +260,41 @@ endif
 "configure ag.vim to always start searching from your project root instead of the cwd
 let g:ag_prg="ag --vimgrep --smart-case"
 let g:ag_working_path_mode="r"
-nnoremap <Leader>vv  <Esc>:Ag <cword><cr>
+let g:ag_highlight=1
+nnoremap <silent> <Leader>vv  <Esc>:Ag <cword><cr>
+nnoremap <silent> <Leader>vf  <Esc>:AgFile <cword><cr>
+"vnoremap \fv  :call SeachSelectInFile()<cr>
+
+"function! SeachSelectInFile()  range
+    "let w = select_and_search#get_selected_text()
+    "echo w
+"endfunction
 
 
 
+
+
+EasyGrep
+let g:EasyGrepRecursive = 1
+let g:EasyGrepOpenWindowOnMatch=0
+let g:EasyGrepFilesToExclude = "*.class, *.jar, *.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
+let g:EasyGrepCommand=1
 
 
 
 "vim-multiple-cursors
 " Called once right before you start selecting multiple cursors
 function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
-  endif
+    if exists(':NeoCompleteLock')==2
+        exe 'NeoCompleteLock'
+    endif
 endfunction
 
 " Called once only when the multiple selection is canceled (default <Esc>)
 function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
+    if exists(':NeoCompleteUnlock')==2
+        exe 'NeoCompleteUnlock'
+    endif
 endfunction
 
 
@@ -287,7 +332,7 @@ map <Leader>mr <Plug>MarkRegex
 "PHP
 au FileType php call PHPFuncList()
 function! PHPFuncList()
-	set  tags-=e:\programs\vim\php-tags, tags-=e:\programs\vim\php-vk-tags
+    set  tags-=e:\programs\vim\php-tags, tags-=e:\programs\vim\php-vk-tags
     set  tags+=e:\programs\vim\php-tags, tags+=e:\programs\vim\php-vk-tags
 endfunction
 
@@ -298,8 +343,8 @@ let g:rooter_manual_only = 0 "don't auto change to root directory
 map <silent> <Leader>cd <Plug>RooterChangeToRootDirectory
 
 "YankRing
-"map <Leader>p <Esc>:YRShow<cr>
-"let g:yankring_max_history = 100
+map <Leader>p <Esc>:YRShow<cr>
+let g:yankring_max_history = 100
 
 "EasyMotion
 let g:EasyMotion_leader_key = ','
@@ -316,6 +361,8 @@ nmap ga <Plug>(EasyAlign)
 "CtrlP
 noremap mm <Esc>:CtrlPMRU<cr>
 noremap mf <Esc>:CtrlP<cr>
+noremap mb <Esc>:CtrlPBuffer<cr>
+nnoremap ;;r <Esc>:CtrlPClearCache<cr>
 let g:ctrlp_clear_cache_on_exit=0
 "let g:ctrlp_user_command = 'ag %s -l --nocolor -g -Q ""'
 "let g:ctrlp_use_caching = 0
@@ -352,11 +399,11 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'php' : 'e:\programs\vim\php_funclist.txt',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+            \ 'default' : '',
+            \ 'php' : 'e:\programs\vim\php_funclist.txt',
+            \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'scheme' : $HOME.'/.gosh_completions'
+            \ }
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -405,7 +452,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+    let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'

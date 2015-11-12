@@ -23,11 +23,9 @@ Plugin 'tpope/vim-fugitive'
 
 
 Plugin 'vim-airline'
-"Plugin 'Lokaltog/vim-powerline' 
-"Plugin 'powerline/powerline'
 
 Plugin 'matchit.zip'
-"Plugin 'YankRing.vim'
+Plugin 'YankRing.vim'
 Plugin 'EasyMotion'
 
 "Plugin 'terryma/vim-multiple-cursors'
@@ -43,7 +41,7 @@ Plugin 'phpfolding.vim'
 Plugin 'FuzzyFinder'
 "Plugin 'ShowMarks'
 Plugin 'VOoM'
-"Plugin 'SearchComplete'
+Plugin 'SearchComplete'
 "Plugin 'vimwiki'
 "Plugin 'tpope/vim-repeat'
 Plugin 'jsbeautify'
@@ -83,6 +81,9 @@ Plugin 'Java-Syntax-and-Folding'
 Plugin 'luochen1990/select-and-search'
 
 Plugin 'Mark'
+
+Plugin 'itchyny/calendar.vim'
+Plugin 'itchyny/thumbnail.vim'
 
 
 
@@ -134,7 +135,7 @@ set tabstop=4 "tab to space
 set expandtab
 set linespace=1
 set ve=all
-set autochdir  "auto change to current folder
+"set autochdir  "auto change to current folder
 set guifont=YaHei\ Consolas\ Hybrid:h11
 set ignorecase smartcase
 
@@ -154,9 +155,13 @@ map q: <Nop>
 
 
 nnoremap mx <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
+map <c-F11> <C-W>_<C-W><Bar>
 noremap <Leader>q <Esc>:q<cr>
 noremap <Leader>Q <Esc>:q!<cr>
-map <C-n> <Esc>:tabnew<cr>
+
+
+
+map <C-t> <Esc>:tabnew<cr>
 map <C-u> <Esc>:tabnext<cr>
 map <C-y> <Esc>:tabprevious<cr>
 "format json
@@ -164,8 +169,12 @@ map <Leader><Leader>fj  !python -m json.tool<CR>
 "format xml
 map <Leader><Leader>fx  !xmllint --format --recover - 2>/dev/null <CR>
 
+"remove space 
+map <Leader><Leader>ks  s/\s\+/ /g<CR>
+map <Leader><Leader>kS  s/\s\+//g<CR>
+
 "base64 encode
-map <Leader><Leader>be  !base64 <CR>
+map <Leader><Leader>be  y<Esc>gv:!base64 <CR>kp
 map <Leader><Leader>bd  !base64 -d -i <CR>
 
 
@@ -184,12 +193,27 @@ vnoremap <Space> e
 "save file
 nnoremap <Leader>s <Esc>:w<cr>
 "wrap
-nnoremap ;w <Esc>:set wrap<cr>
-nnoremap ;;w <Esc>:set nowrap<cr>
+nnoremap ;w  :call ToggleWrap()<cr>
+function! ToggleWrap()
+    set wrap!
+    let wrap = &wrap
+    echo wrap
+    if(wrap)
+        noremap j gj
+        noremap k gk
+    else
+        unmap j
+        unmap k
+    endif
+endfunction
 
 "menu
 nnoremap ;m <Esc>:set guioptions+=m<cr>
 nnoremap ;;m <Esc>:set guioptions-=m<cr>
+
+"rainbow
+nnoremap ;r <Esc>:RainbowToggle<cr>
+
 
 "nmap gc V,r<c-h>:4<cr>f{i<cr><esc>Vy<c-l>p  
 "nmap gc V,r<c-h>:3<cr>f{i<cr><esc>V,,fj
@@ -211,6 +235,19 @@ nmap <c-right> <c-w>>
 nmap <c-up> <c-w>+
 nmap <c-down> <c-w>-
 
+
+if has('win32')
+    "copy file name
+    nmap ;pf :let @*=substitute(expand("%"), "/", "\\", "g")<CR>
+    "copy file name and path
+    nmap ;pp :let @*=substitute(expand("%:p"), "/", "\\", "g")<CR>
+
+    " Open the folder containing the currently open file. Escape properly for Windows cmd shell.
+    nnoremap <silent> <C-F5> :if expand("%:p:h") != "" \| exec "!start explorer.exe" shellescape(expand("%:p:h")) \| endif<CR>
+else
+    nmap ;pf :let @*=expand("%")<CR>
+    nmap ;pp :let @*=expand("%:p")<CR>
+endif
 
 "}}}custome operation
 
@@ -258,13 +295,21 @@ set undodir=$HOME/\_undo_history/
 
 "Ag
 if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+    " Use Ag over Grep
+    set grepprg=ag\ --nogroup\ --nocolor
 endif
 "configure ag.vim to always start searching from your project root instead of the cwd
 let g:ag_prg="ag --vimgrep --smart-case"
 let g:ag_working_path_mode="r"
-nnoremap <Leader>vv  <Esc>:Ag <cword><cr>
+let g:ag_highlight=1
+nnoremap <silent> <Leader>vv  <Esc>:Ag <cword><cr>
+nnoremap <silent> <Leader>vf  <Esc>:AgFile <cword><cr>
+"vnoremap \fv  :call SeachSelectInFile()<cr>
+
+"function! SeachSelectInFile()  range
+    "let w = select_and_search#get_selected_text()
+    "echo w
+"endfunction
 
 
 
@@ -281,16 +326,16 @@ nnoremap <Leader>vv  <Esc>:Ag <cword><cr>
 "vim-multiple-cursors
 " Called once right before you start selecting multiple cursors
 function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
-  endif
+    if exists(':NeoCompleteLock')==2
+        exe 'NeoCompleteLock'
+    endif
 endfunction
 
 " Called once only when the multiple selection is canceled (default <Esc>)
 function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
+    if exists(':NeoCompleteUnlock')==2
+        exe 'NeoCompleteUnlock'
+    endif
 endfunction
 
 
@@ -325,16 +370,16 @@ let g:SuperTabRetainCompletionType = 0
 au FileType groovy call AddGroovyFuncList()
 function! AddGroovyFuncList()
     execute("NeoCompleteLock")
-	set  tags-=e:\programs\vim\groovy-tags, tags-=e:\programs\vim\groovy-api-tags, tags-=e:\programs\vim\jdk-tags
+    set  tags-=e:\programs\vim\groovy-tags, tags-=e:\programs\vim\groovy-api-tags, tags-=e:\programs\vim\jdk-tags
     set  tags+=e:\programs\vim\groovy-tags, tags+=e:\programs\vim\groovy-api-tags, tags+=e:\programs\vim\jdk-tags
 endfunction
 
 "JAVA
 "au FileType java call AddJAVAFuncList()
 "function! AddJAVAFuncList()
-    "let g:SuperTabDefaultCompletionType = "<c-x><c-]>"
-	"set  tags-=e:\programs\vim\jdk-tags
-    "set  tags+=e:\programs\vim\jdk-tags
+"let g:SuperTabDefaultCompletionType = "<c-x><c-]>"
+"set  tags-=e:\programs\vim\jdk-tags
+"set  tags+=e:\programs\vim\jdk-tags
 "endfunction
 
 "Mark
@@ -345,7 +390,7 @@ map <Leader>mr <Plug>MarkRegex
 "PHP
 au FileType php call PHPFuncList()
 function! PHPFuncList()
-	set  tags-=e:\programs\vim\php-tags, tags-=e:\programs\vim\php-vk-tags
+    set  tags-=e:\programs\vim\php-tags, tags-=e:\programs\vim\php-vk-tags
     set  tags+=e:\programs\vim\php-tags, tags+=e:\programs\vim\php-vk-tags
 endfunction
 
@@ -356,8 +401,8 @@ let g:rooter_manual_only = 0 "don't auto change to root directory
 map <silent> <Leader>cd <Plug>RooterChangeToRootDirectory
 
 "YankRing
-"map <Leader>p <Esc>:YRShow<cr>
-"let g:yankring_max_history = 100
+map <Leader>p <Esc>:YRShow<cr>
+let g:yankring_max_history = 100
 
 "EasyMotion
 let g:EasyMotion_leader_key = ','
@@ -402,6 +447,8 @@ map <Leader>zd <Esc>:DisablePHPFolds<Cr>
 "CtrlP
 noremap mm <Esc>:CtrlPMRU<cr>
 noremap mf <Esc>:CtrlP<cr>
+noremap mb <Esc>:CtrlPBuffer<cr>
+nnoremap ;;r <Esc>:CtrlPClearCache<cr>
 let g:ctrlp_clear_cache_on_exit=0
 "let g:ctrlp_user_command = 'ag %s -l --nocolor -g -Q ""'
 "let g:ctrlp_use_caching = 0
@@ -413,9 +460,9 @@ let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_regexp = 0
 let g:ctrlp_mruf_max=1000
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|target)$',
-  \ 'file': '\v\.(exe|so|dll|jpg|png|jpeg)$',
-  \ }
+            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|target)$',
+            \ 'file': '\v\.(exe|so|dll|jpg|png|jpeg)$',
+            \ }
 
 "Maven setting
 autocmd BufNewFile,BufReadPost *.* call s:SetupMavenMap()
@@ -479,11 +526,11 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'php' : 'e:\programs\vim\php_funclist.txt',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+            \ 'default' : '',
+            \ 'php' : 'e:\programs\vim\php_funclist.txt',
+            \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'scheme' : $HOME.'/.gosh_completions'
+            \ }
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -532,14 +579,32 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+    let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 """----------------------------------------------------------------------------------------
+" file is large from 10mb
+let g:LargeFile = 1024 * 1024 * 10
+augroup LargeFile 
+ autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+augroup END
 
+function! LargeFile()
+ " no syntax highlighting etc
+ set eventignore+=FileType
+ " save memory when other file is viewed
+ setlocal bufhidden=unload
+ " is read-only (write with :w new_filename)
+ setlocal buftype=nowrite
+ " no undo possible
+ setlocal undolevels=-1
+ " display message
+ autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
+endfunction
+"""----------------------------------------------------------------------------------------
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
@@ -547,32 +612,32 @@ behave mswin
 
 set diffexpr=MyDiff()
 function! MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      if empty(&shellxquote)
-        let l:shxq_sav = ''
-        set shellxquote&
-      endif
-      let cmd = '"' . $VIMRUNTIME . '\diff"'
+    let opt = '-a --binary '
+    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+    let arg1 = v:fname_in
+    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+    let arg2 = v:fname_new
+    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+    let arg3 = v:fname_out
+    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+    if $VIMRUNTIME =~ ' '
+        if &sh =~ '\<cmd'
+            if empty(&shellxquote)
+                let l:shxq_sav = ''
+                set shellxquote&
+            endif
+            let cmd = '"' . $VIMRUNTIME . '\diff"'
+        else
+            let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+        endif
     else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+        let cmd = $VIMRUNTIME . '\diff'
     endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
-  if exists('l:shxq_sav')
-    let &shellxquote=l:shxq_sav
-  endif
+    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+    if exists('l:shxq_sav')
+        let &shellxquote=l:shxq_sav
+    endif
 endfunction
 
 
