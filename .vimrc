@@ -274,7 +274,7 @@ nnoremap <silent> <Leader>vf  <Esc>:AgFile <cword><cr>
 
 
 
-EasyGrep
+"EasyGrep
 let g:EasyGrepRecursive = 1
 let g:EasyGrepOpenWindowOnMatch=0
 let g:EasyGrepFilesToExclude = "*.class, *.jar, *.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
