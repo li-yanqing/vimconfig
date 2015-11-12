@@ -18,7 +18,7 @@ Plugin 'EasyGrep'
 Plugin 'VimExplorer'
 Plugin 'quickrun.vim'
 
-Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Shougo/neocomplete.vim'
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'vim-airline'
@@ -41,7 +41,7 @@ Plugin 'surround.vim'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'Decho'
 "Plugin 'vimshell-ssh'    
-Plugin 'Shougo/vimshell.vim'
+"Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
 
 Plugin 'VisIncr'
