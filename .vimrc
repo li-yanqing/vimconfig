@@ -189,6 +189,8 @@ nnoremap ;;m <Esc>:set guioptions-=m<cr>
 "rainbow
 nnoremap ;r <Esc>:RainbowToggle<cr>
 
+"refresh file
+nnoremap <Leader>r <Esc>:e<cr>
 
 "nmap gc V,r<c-h>:4<cr>f{i<cr><esc>Vy<c-l>p  
 "nmap gc V,r<c-h>:3<cr>f{i<cr><esc>V,,fj
@@ -302,8 +304,8 @@ endfunction
 
 
 "QuickRun
-nmap <Leader>r <Esc>:QuickRun<cr>
-vmap <Leader>r :QuickRun bash<cr>
+nmap <Leader><Leader>r <Esc>:QuickRun<cr>
+vmap <Leader><Leader>r :QuickRunbash<cr>
 let g:quickrun_config = {}
 let g:quickrun_config.markdown = {
             \ 'type': 'markdown/pandoc',
