@@ -113,7 +113,7 @@ filetype plugin on
 let mapleader = ","
 set nu
 set fileencodings=utf-8,gbk
-set nowrap
+set wrap
 autocmd BufReadPost * set noswapfile
 
 set directory=$TEMP
