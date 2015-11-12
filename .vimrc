@@ -145,8 +145,8 @@ map <Leader><Leader>fj  !python -m json.tool<CR>
 map <Leader><Leader>fx  !xmllint --format --recover - 2>/dev/null <CR>
 
 "remove space 
-map <Leader><Leader>ks  s/\s\+/ /g<CR>
-map <Leader><Leader>kS  s/\s\+//g<CR>
+map <Leader><Leader>ks  :s/\s\+/ /g<CR>
+map <Leader><Leader>kS  :s/\s\+//g<CR>
 
 "base64 encode
 map <Leader><Leader>be  y<Esc>gv:!base64 <CR>kp
