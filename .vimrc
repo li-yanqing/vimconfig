@@ -65,6 +65,7 @@ Plugin 'luochen1990/select-and-search'
 Plugin 'Mark'
 
 
+Plugin 'vim-scripts/apachelogs.vim'
 
 
 "color

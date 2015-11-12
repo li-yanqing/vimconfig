@@ -86,6 +86,7 @@ Plugin 'itchyny/calendar.vim'
 Plugin 'itchyny/thumbnail.vim'
 
 
+Plugin 'vim-scripts/apachelogs.vim'
 
 
 "color
