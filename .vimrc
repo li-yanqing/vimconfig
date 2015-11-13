@@ -125,7 +125,7 @@ set ignorecase smartcase
 ""map <F2> <Esc>:tabprevious<cr>
 ""map <F3> <Esc>:tabnext<cr>
 
-"custome operation{{{
+"custom operation{{{
 
 "Disable q:
 map q: <Nop>
@@ -215,7 +215,10 @@ nmap <c-up> <c-w>+
 nmap <c-down> <c-w>-
 
 
-"}}}custome operation
+"print custom pattern
+nnoremap  <Leader>sl  <esc>:vimgrep! /start \w\+Transform/ %:p<cr>:copen<cr>
+
+"}}}custom operation
 
 
 

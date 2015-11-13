@@ -149,11 +149,10 @@ set ignorecase smartcase
 ""map <F2> <Esc>:tabprevious<cr>
 ""map <F3> <Esc>:tabnext<cr>
 
-"custome operation{{{
+"custom operation{{{
 
 "Disable q:
 map q: <Nop>
-
 
 nnoremap mx <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
 map <c-F11> <C-W>_<C-W><Bar>
@@ -238,6 +237,9 @@ nmap <c-right> <c-w>>
 nmap <c-up> <c-w>+
 nmap <c-down> <c-w>-
 
+"print custom pattern
+nnoremap  <Leader>sl  <esc>:vimgrep! /start \w\+Transform/ %:p<cr>:copen<cr>
+
 
 if has('win32')
     "copy file name
@@ -252,7 +254,7 @@ else
     nmap ;pp :let @*=expand("%:p")<CR>
 endif
 
-"}}}custome operation
+"}}}custom operation
 
 
 
@@ -293,7 +295,6 @@ set hlsearch
 "Gundo
 set undofile
 set undodir=$HOME/\_undo_history/
-
 
 
 "Ag
