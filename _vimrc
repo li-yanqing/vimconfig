@@ -238,7 +238,7 @@ nmap <c-up> <c-w>+
 nmap <c-down> <c-w>-
 
 "print custom pattern
-nnoremap  <Leader>sl  <esc>:vimgrep! /start \w\+Transform/ %:p<cr>:copen<cr>
+nnoremap  <Leader>gl  <esc>:vimgrep! /start \w\+Transform/ %:p<cr>:copen<cr>
 
 
 if has('win32')
@@ -306,8 +306,8 @@ endif
 let g:ag_prg="ag --vimgrep --smart-case"
 let g:ag_working_path_mode="r"
 let g:ag_highlight=1
-nnoremap <silent> <Leader>vv  <Esc>:Ag <cword><cr>
-nnoremap <silent> <Leader>vf  <Esc>:AgFile <cword><cr>
+nnoremap <silent> <Leader>vv  <Esc>:Ag! <cword><cr>
+nnoremap <silent> <Leader>vf  <Esc>:AgFile! <cword><cr>
 "vnoremap \fv  :call SeachSelectInFile()<cr>
 
 "function! SeachSelectInFile()  range

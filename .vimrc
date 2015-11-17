@@ -216,7 +216,7 @@ nmap <c-down> <c-w>-
 
 
 "print custom pattern
-nnoremap  <Leader>sl  <esc>:vimgrep! /start \w\+Transform/ %:p<cr>:copen<cr>
+nnoremap  <Leader>gl  <esc>:vimgrep! /start \w\+Transform/ %:p<cr>:copen<cr>
 
 "}}}custom operation
 
