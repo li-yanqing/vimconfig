@@ -12,16 +12,21 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'SuperTab'
 "Plugin 'EasyGrep'
 Plugin 'VimExplorer'
+
+"Plugin 'The-NERD-tree'
 "Plugin 'mru.vim'
 Plugin 'quickrun.vim'
 Plugin 'taglist.vim'
 Plugin 'vim-misc'
+
 Plugin 'phpcomplete.vim'
 
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'tpope/vim-fugitive'
 
+Plugin 'vim-scripts/notes.vim'
 
+"Plugin 'vim-scripts/togglenumber'
 Plugin 'vim-airline'
 
 Plugin 'matchit.zip'
@@ -32,7 +37,8 @@ Plugin 'EasyMotion'
 
 Plugin 'rking/ag.vim'
 
-"Plugin 'AutoClose'
+"Plugin 'vim-scripts/AutoClose'
+
 Plugin 'vim-easy-align'
 Plugin 'HTML-AutoCloseTag'
 Plugin 'DBGPavim'
@@ -54,11 +60,12 @@ Plugin 'kien/ctrlp.vim'
 "Plugin 'vimshell-ssh'    
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
+"Plugin 'vim-scripts/Conque-Shell'
 
 Plugin 'VisIncr'
 Plugin 'auto_mkdir'
 
-"Plugin 'UltiSnips'
+
 "Plugin 'Markdown'
 Plugin 'Markdown-syntax'
 Plugin 'xml.vim'
@@ -68,13 +75,13 @@ Plugin 'luochen1990/rainbow'
 
 Plugin 'Gundo'
 
-Plugin 'mikelue/vim-maven-plugin'
+"Plugin 'mikelue/vim-maven-plugin'
 
 Plugin 'JavaDecompiler.vim'
 
 Plugin 'airblade/vim-rooter'
 
-Plugin 'artur-shaik/vim-javacomplete2'
+"Plugin 'artur-shaik/vim-javacomplete2'
 "Plugin 'msanders/snipmate.vim'
 Plugin 'Java-Syntax-and-Folding'
 
@@ -89,8 +96,13 @@ Plugin 'itchyny/thumbnail.vim'
 Plugin 'sxinle/vim-log-syntax'
 
 
+"Plugin 'MikeCoder/markdown-preview.vim'
+Plugin 'li-yanqing/vim-json-line-format' 
+Plugin 'vim-scripts/auto_autoread.vim'
+
 "color
 Plugin 'dw_colors'
+Plugin 'vim-scripts/xoria256.vim'
 Plugin 'Color-Sampler-Pack'
 Plugin 'ScrollColors'
 """----------------------------------------------------------------------------------------
@@ -114,7 +126,7 @@ filetype plugin on
 let mapleader = ","
 set nu
 set fileencodings=utf-8,gbk
-set wrap
+set nowrap
 autocmd BufReadPost * set noswapfile
 
 set directory=$TEMP
@@ -137,7 +149,7 @@ set expandtab
 set linespace=1
 set ve=all
 "set autochdir  "auto change to current folder
-set guifont=YaHei\ Consolas\ Hybrid:h11
+set guifont=YaHei\ Consolas\ Hybrid:h12
 set ignorecase smartcase
 
 "auto change dir to current dir
@@ -151,8 +163,8 @@ set ignorecase smartcase
 
 "custom operation{{{
 
-"Disable q:
-map q: <Nop>
+"Disable q: but let 'q' not quickly
+"map q: <Nop>
 
 nnoremap mx <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
 map <c-F11> <C-W>_<C-W><Bar>
@@ -160,12 +172,15 @@ noremap <Leader>q <Esc>:q<cr>
 noremap <Leader>Q <Esc>:q!<cr>
 
 
-
 map <C-t> <Esc>:tabnew<cr>
 map <C-u> <Esc>:tabnext<cr>
 map <C-y> <Esc>:tabprevious<cr>
+imap <C-t> <Esc>:tabnew<cr>
+imap <C-u> <Esc>:tabnext<cr>
+imap <C-y> <Esc>:tabprevious<cr>
+
 "format json
-map <Leader><Leader>fj  !python -m json.tool<CR>
+"map <Leader><Leader>fj  !python -m json.tool<CR>
 "format xml
 map <Leader><Leader>fx  !xmllint --format --recover - 2>/dev/null <CR>
 
@@ -174,8 +189,10 @@ map <Leader><Leader>ks  :s/\s\+/ /g<CR>
 map <Leader><Leader>kS  :s/\s\+//g<CR>
 
 "base64 encode
-map <Leader><Leader>be  y<Esc>gv:!base64 <CR>kp
-map <Leader><Leader>bd  !base64 -d -i <CR>
+"map <Leader><Leader>be  y<Esc>gv:!base64 <CR>kp
+"map <Leader><Leader>bd  !base64 -d -i <CR>
+nnoremap <leader><leader>be :python base64_encode_append()<CR>
+nnoremap <leader><leader>bd :python base64_decode_append()<CR>
 
 
 nnoremap <M-d> <c-f>
@@ -232,6 +249,12 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
+
+inoremap <C-J> <esc><C-W>j
+inoremap <C-K> <esc><C-W>k
+inoremap <C-H> <esc><C-W>h
+inoremap <C-L> <esc><C-W>l
+
 nmap <c-left> <c-w><
 nmap <c-right> <c-w>>
 nmap <c-up> <c-w>+
@@ -261,8 +284,10 @@ endif
 
 "color scheme
 "colorscheme desert
-"colorscheme desertEx
-colorscheme desert256 
+colorscheme desertEx
+"colorscheme desert256
+"colorscheme xoria256 
+"colorscheme eclipse 
 
 "for interface
 "set guioptions-=T "tool bar
@@ -326,6 +351,13 @@ nnoremap <silent> <Leader>vf  <Esc>:AgFile! <cword><cr>
 "let g:EasyGrepCommand=1
 
 
+"vim-http-client
+let http_client_bind_hotkey=0
+silent! nnoremap <unique> <Leader><Leader>tt :HTTPClientDoRequest<cr>
+
+"thumbnail
+noremap <Leader>t <esc>:Thumbnail<cr>i
+
 
 "vim-multiple-cursors
 " Called once right before you start selecting multiple cursors
@@ -342,13 +374,15 @@ function! Multiple_cursors_after()
     endif
 endfunction
 
+"Calendar
+nnoremap <silent> <Leader>ca  <Esc>:Calendar<cr>
 
 
 
 
 "QuickRun
 nmap <Leader><Leader>r <Esc>:QuickRun<cr>
-vmap <Leader><Leader>r :QuickRunbash<cr>
+vmap <Leader><Leader>r :QuickRun bash<cr>
 let g:quickrun_config = {}
 let g:quickrun_config.markdown = {
             \ 'type': 'markdown/pandoc',
@@ -360,12 +394,16 @@ let g:quickrun_config.markdown = {
 "select & search
 let g:select_and_search_active = 3
 
+"vim-json-line-format
+nnoremap <leader><Leader>fj :python json_line_format_write()<CR>
+nnoremap <leader><Leader>fp :python json_line_format_print()<CR>
+
 "rainbow
 let g:rainbow_active=1
 
 "SuperTab
 let g:SuperTabRetainCompletionType = 0 
-""let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 
 "Groovy
 au FileType groovy call AddGroovyFuncList()
@@ -406,7 +444,11 @@ map <Leader>p <Esc>:YRShow<cr>
 let g:yankring_max_history = 100
 
 "EasyMotion
-let g:EasyMotion_leader_key = ','
+let g:EasyMotion_leader_key = '<leader>'
+let g:EasyMotion_mapping_j = '<leader>jl'
+let g:EasyMotion_mapping_k = '<leader>kl'
+"let g:EasyMotion_do_mapping = 0
+
 
 "EasyAlign
 vmap <Enter> <Plug>(EasyAlign)
@@ -466,50 +508,62 @@ let g:ctrlp_custom_ignore = {
             \ }
 
 "Maven setting
-autocmd BufNewFile,BufReadPost *.* call s:SetupMavenMap()
-function! <SID>SetupMavenMap()
-    doautocmd MavenAutoDetect BufNewFile,BufReadPost
+"autocmd BufNewFile,BufReadPost *.* call s:SetupMavenMap()
+"function! <SID>SetupMavenMap()
+    "doautocmd MavenAutoDetect BufNewFile,BufReadPost
 
-    if !maven#isBufferUnderMavenProject(bufnr("%"))
-        return
-    endif
+    "if !maven#isBufferUnderMavenProject(bufnr("%"))
+        "return
+    "endif
 
-    " Execute testing
-    if !hasmapto("maven#run-unittest", "in")
-        imap <buffer> <silent> <F5> maven#run-unittest
-        nmap <buffer> <silent> <F5> maven#run-unittest
-    endif
-    " //~)
+    "" Execute testing
+    "if !hasmapto("maven#run-unittest", "in")
+        "imap <buffer> <silent> <F5> maven#run-unittest
+        "nmap <buffer> <silent> <F5> maven#run-unittest
+    "endif
+    "" //~)
 
-    " Execute all of testing
-    if !hasmapto("maven#run-unittest-all", "in")
-        imap <buffer> <silent> <C-F5> maven#run-unittest-all
-        nmap <buffer> <silent> <C-F5> maven#run-unittest-all
-    endif
-    " //~)
+    "" Execute all of testing
+    "if !hasmapto("maven#run-unittest-all", "in")
+        "imap <buffer> <silent> <C-F5> maven#run-unittest-all
+        "nmap <buffer> <silent> <C-F5> maven#run-unittest-all
+    "endif
+    "" //~)
 
-    " Switch of unit test
-    if !hasmapto("maven#switch-unittest-file", "in")
-        imap <buffer> <silent> <F6> maven#switch-unittest-file
-        nmap <buffer> <silent> <F6> maven#switch-unittest-file
-    endif
-    " //~)
+    "" Switch of unit test
+    "if !hasmapto("maven#switch-unittest-file", "in")
+        "imap <buffer> <silent> <F6> maven#switch-unittest-file
+        "nmap <buffer> <silent> <F6> maven#switch-unittest-file
+    "endif
+    "" //~)
 
-    " Open for testing result of testing
-    if !hasmapto("maven#open-test-result", "in")
-        imap <buffer> <silent> <C-F6> maven#open-test-result
-        nmap <buffer> <silent> <C-F6> maven#open-test-result
-    endif
-    " //~)
-endfunction  
+    "" Open for testing result of testing
+    "if !hasmapto("maven#open-test-result", "in")
+        "imap <buffer> <silent> <C-F6> maven#open-test-result
+        "nmap <buffer> <silent> <C-F6> maven#open-test-result
+    "endif
+    "" //~)
+"endfunction  
 
 
 
 "javacomplete2
-autocmd FileType java set omnifunc=javacomplete#Complete
-nmap <Leader>i <Plug>(JavaComplete-Imports-Add)
-imap <Leader>i <Plug>(JavaComplete-Imports-Add)
+"autocmd FileType java set omnifunc=javacomplete#Complete
+"nmap <Leader>i <Plug>(JavaComplete-Imports-Add)
+"imap <Leader>i <Plug>(JavaComplete-Imports-Add)
 
+"Eclim
+inoremap <m-/> <c-x><c-o>
+nnoremap <leader>jdp  <esc>:JavaDocPreview<cr>
+nnoremap <leader>jcr  <esc>:JavaCorrect<cr>
+nnoremap <leader>jrn  <esc>:JavaRename  
+nnoremap <leader>jch  <esc>:JavaCallHierarchy<cr>
+
+nnoremap <leader>jim  <esc>:JavaImport<cr>
+nnoremap <leader>jio  <esc>:JavaImportOrganize<cr>
+nnoremap <leader>jgs  <esc>:JavaGetSet<cr>
+nnoremap <leader>jg  <esc>:JavaGet<cr>
+nnoremap <leader>js  <esc>:JavaSet<cr>
 
 
 
@@ -563,7 +617,7 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
 " AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_select = 1
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
@@ -578,11 +632,13 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.java = '\k\.\k*'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
