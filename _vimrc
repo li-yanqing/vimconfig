@@ -33,9 +33,12 @@ Plugin 'matchit.zip'
 Plugin 'YankRing.vim'
 Plugin 'EasyMotion'
 
-"Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'terryma/vim-smooth-scroll'
 
 Plugin 'rking/ag.vim'
+
+Plugin 'dhruvasagar/vim-table-mode'
 
 "Plugin 'vim-scripts/AutoClose'
 
@@ -53,7 +56,10 @@ Plugin 'SearchComplete'
 Plugin 'jsbeautify'
 Plugin 'surround.vim'
 "Plugin 'Quramy/vison'
+
 Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/unite-outline'
+
 Plugin 'aquach/vim-http-client'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'Decho'
@@ -97,14 +103,19 @@ Plugin 'sxinle/vim-log-syntax'
 
 
 "Plugin 'MikeCoder/markdown-preview.vim'
+"Plugin 'vim-scripts/auto_autoread.vim'
+
+Plugin 'chrisbra/vim-diff-enhanced'
+
 Plugin 'li-yanqing/vim-json-line-format' 
-Plugin 'vim-scripts/auto_autoread.vim'
 
 "color
 Plugin 'dw_colors'
 Plugin 'vim-scripts/xoria256.vim'
 Plugin 'Color-Sampler-Pack'
 Plugin 'ScrollColors'
+Plugin 'morhetz/gruvbox'
+Plugin 'tomasr/molokai'
 """----------------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -169,6 +180,7 @@ set ignorecase smartcase
 nnoremap mx <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
 map <c-F11> <C-W>_<C-W><Bar>
 noremap <Leader>q <Esc>:q<cr>
+noremap <Leader><leader>q <Esc>:tabclose<cr>
 noremap <Leader>Q <Esc>:q!<cr>
 
 
@@ -285,9 +297,13 @@ endif
 "color scheme
 "colorscheme desert
 colorscheme desertEx
+"colorscheme molokai
 "colorscheme desert256
 "colorscheme xoria256 
 "colorscheme eclipse 
+"colorscheme moria 
+"colorscheme calmbreeze
+
 
 "for interface
 "set guioptions-=T "tool bar
@@ -320,6 +336,12 @@ set hlsearch
 "Gundo
 set undofile
 set undodir=$HOME/\_undo_history/
+
+"vim-smooth-scroll
+"noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+"noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+"noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
+"noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
 
 
 "Ag
@@ -375,7 +397,7 @@ function! Multiple_cursors_after()
 endfunction
 
 "Calendar
-nnoremap <silent> <Leader>ca  <Esc>:Calendar<cr>
+nnoremap <silent> <Leader><Leader>ca  <Esc>:Calendar<cr>
 
 
 
@@ -546,6 +568,8 @@ let g:ctrlp_custom_ignore = {
 "endfunction  
 
 
+"Unite
+nmap <Leader>l  <esc>:Unite outline<cr><esc>:sleep 100 m<cr>i
 
 "javacomplete2
 "autocmd FileType java set omnifunc=javacomplete#Complete
@@ -553,18 +577,28 @@ let g:ctrlp_custom_ignore = {
 "imap <Leader>i <Plug>(JavaComplete-Imports-Add)
 
 "Eclim
-inoremap <m-/> <c-x><c-o>
+inoremap <m-/> <c-x><c-u>
+cabbrev pcd ProjectCD
+
 nnoremap <leader>jdp  <esc>:JavaDocPreview<cr>
 nnoremap <leader>jcr  <esc>:JavaCorrect<cr>
 nnoremap <leader>jrn  <esc>:JavaRename  
 nnoremap <leader>jch  <esc>:JavaCallHierarchy<cr>
 
+nnoremap <leader>im  <esc>:JavaImport<cr>
 nnoremap <leader>jim  <esc>:JavaImport<cr>
 nnoremap <leader>jio  <esc>:JavaImportOrganize<cr>
 nnoremap <leader>jgs  <esc>:JavaGetSet<cr>
 nnoremap <leader>jg  <esc>:JavaGet<cr>
 nnoremap <leader>js  <esc>:JavaSet<cr>
+nnoremap <leader>jfl  <esc>:LocateFile<cr>
 
+nnoremap <leader>ju  <esc>:JUnit<cr>
+nnoremap <leader>jff  <esc>:JavaFormat<cr>
+nnoremap <leader>jsc  <esc>:JavaSearchContext<cr>
+nnoremap <leader>jsh  <esc>:JavaSearch<cr>
+"nnoremap <leader>jur  <esc>:JUnitResult<cr>
+nnoremap <leader>jh  <esc>:JavaHierarchy<cr>
 
 
 """---------------------------------------------------------------------------------------------------
@@ -617,7 +651,8 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
 " AutoComplPop like behavior.
-let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#enable_auto_select = 1
+
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
@@ -638,7 +673,7 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.java = '\k\.\k*'
+"let g:neocomplete#sources#omni#input_patterns.java = '\k\.\k*'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
@@ -663,10 +698,14 @@ function! LargeFile()
 endfunction
 """----------------------------------------------------------------------------------------
 
-source $VIMRUNTIME/vimrc_example.vim
+"source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+if &diff
+    " diff mode
+    set diffopt+=iwhite
+endif
 set diffexpr=MyDiff()
 function! MyDiff()
     let opt = '-a --binary '
