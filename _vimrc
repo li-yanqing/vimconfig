@@ -203,6 +203,9 @@ map <Leader><Leader>fx  !xmllint --format --recover - 2>/dev/null <CR>
 "remove space 
 map <Leader><Leader>ks  :s/\s\+/ /g<CR>
 map <Leader><Leader>kS  :s/\s\+//g<CR>
+"Transform path sperator
+map <Leader><Leader>kp  :s/\\/\//g<CR>
+map <Leader><Leader>kP  :s/\\/\\\\/g<CR>
 
 "base64 encode
 "map <Leader><Leader>be  y<Esc>gv:!base64 <CR>kp
@@ -439,7 +442,7 @@ function! AddGroovyFuncList()
 endfunction
 
 "VimShell
-nnoremap ,vv <Esc>:VimShellPop<cr>
+nnoremap ,,v <Esc>:VimShellPop<cr>
 autocmd FileType vimshell call VimInit()
 function! VimInit()
     call vimshell#altercmd#define('l', 'll')
