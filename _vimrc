@@ -18,6 +18,7 @@ Plugin 'VimExplorer'
 Plugin 'quickrun.vim'
 Plugin 'taglist.vim'
 Plugin 'vim-misc'
+"Plugin 'myusuf3/numbers.vim'
 
 Plugin 'phpcomplete.vim'
 
@@ -135,7 +136,8 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin on
 let mapleader = ","
-set nu
+set relativenumber
+
 set fileencodings=utf-8,gbk
 set nowrap
 autocmd BufReadPost * set noswapfile
@@ -162,6 +164,8 @@ set ve=all
 "set autochdir  "auto change to current folder
 set guifont=YaHei\ Consolas\ Hybrid:h12
 set ignorecase smartcase
+set incsearch
+set autoindent
 
 "auto change dir to current dir
 "au BufRead,BufNewFile * cd %:p:h
@@ -327,9 +331,6 @@ set laststatus=2
 set ruler
 " show line number
 set number
-" highlight current line
-"set cursorline
-"set cursorcolumn
 " highlight search result
 set hlsearch
 
@@ -400,6 +401,8 @@ endfunction
 nnoremap <silent> <Leader><Leader>ca  <Esc>:Calendar<cr>
 
 
+"numbers.vim
+nnoremap ;n :NumbersToggle<CR>
 
 
 "QuickRun
@@ -428,12 +431,24 @@ let g:SuperTabRetainCompletionType = 0
 "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 
 "Groovy
-au FileType groovy call AddGroovyFuncList()
+"au FileType groovy call AddGroovyFuncList()
 function! AddGroovyFuncList()
     execute("NeoCompleteLock")
     set  tags-=e:\programs\vim\groovy-tags, tags-=e:\programs\vim\groovy-api-tags, tags-=e:\programs\vim\jdk-tags
     set  tags+=e:\programs\vim\groovy-tags, tags+=e:\programs\vim\groovy-api-tags, tags+=e:\programs\vim\jdk-tags
 endfunction
+
+"VimShell
+nnoremap ,vv <Esc>:VimShellPop<cr>
+autocmd FileType vimshell call VimInit()
+function! VimInit()
+    call vimshell#altercmd#define('l', 'll')
+    call vimshell#altercmd#define('ll', 'ls -l')
+    nnoremap <buffer> G <Esc>GA
+endfunction
+
+
+
 
 "JAVA
 "au FileType java call AddJAVAFuncList()
