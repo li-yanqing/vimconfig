@@ -18,16 +18,17 @@ Plugin 'VimExplorer'
 Plugin 'quickrun.vim'
 Plugin 'taglist.vim'
 Plugin 'vim-misc'
-"Plugin 'myusuf3/numbers.vim'
+Plugin 'myusuf3/numbers.vim'
 
 Plugin 'phpcomplete.vim'
 
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-abolish'
 
 Plugin 'vim-scripts/notes.vim'
 
-"Plugin 'vim-scripts/togglenumber'
+Plugin 'vim-scripts/togglenumber'
 Plugin 'vim-airline'
 
 Plugin 'matchit.zip'
@@ -53,7 +54,7 @@ Plugin 'FuzzyFinder'
 Plugin 'VOoM'
 Plugin 'SearchComplete'
 "Plugin 'vimwiki'
-"Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-repeat'
 Plugin 'jsbeautify'
 Plugin 'surround.vim'
 "Plugin 'Quramy/vison'
@@ -339,7 +340,8 @@ set hlsearch
 
 "Gundo
 set undofile
-set undodir=$HOME/\_undo_history/
+set undodir=$HOME/_gundo/
+noremap ,u <esc>:GundoToggle<cr>
 
 "vim-smooth-scroll
 "noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -434,12 +436,42 @@ let g:SuperTabRetainCompletionType = 0
 "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 
 "Groovy
-"au FileType groovy call AddGroovyFuncList()
+au FileType groovy call AddGroovyFuncList()
 function! AddGroovyFuncList()
     execute("NeoCompleteLock")
     set  tags-=e:\programs\vim\groovy-tags, tags-=e:\programs\vim\groovy-api-tags, tags-=e:\programs\vim\jdk-tags
     set  tags+=e:\programs\vim\groovy-tags, tags+=e:\programs\vim\groovy-api-tags, tags+=e:\programs\vim\jdk-tags
 endfunction
+
+"Markdown
+"au FileType markdown call MarkdownFile()
+"function! MarkdownFile()
+    "set  dictionary-=e:\programs\vim\engwords
+    "set  dictionary+=e:\programs\vim\engwords
+    "let g:SuperTabDefaultCompletionType = "<c-x><c-k>"
+"endfunction
+
+function! RunGroovy()
+    " copy the current buffer file name in a variable
+    let gfname=@%
+    " open a new buffer in my window below
+    botright new
+    " define the buffer to be a mere scratch buffer not intended to be edited or saved
+    setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+    setlocal filetype=groovy
+    " create a temporaty file name to hold the output of the execution of my Groovy script
+    let gtmpf = tempname()
+    " define the command line to launch my Groovy script and retrieve its output in the temporary file
+    let gcmd = ':!groovy ' . gfname . ' > ' . gtmpf
+    echo gfname
+    " execute the groovy command
+    silent execute gcmd
+    " insert the content of the output from the temporary file in my buffer
+    silent execute '0r ' . gtmpf
+endfunction
+nnoremap qg :call RunGroovy()<cr>
+
+
 
 "VimShell
 nnoremap ,,v <Esc>:VimShellPop<cr>
@@ -627,14 +659,17 @@ let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
+
 " Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#auto_completion_start_length = 4
+let g:neocomplete#sources#syntax#min_keyword_length = 4
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
             \ 'default' : '',
             \ 'php' : 'e:\programs\vim\php_funclist.txt',
+            \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
             \ 'scheme' : $HOME.'/.gosh_completions'
             \ }
@@ -643,7 +678,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+let g:neocomplete#keyword_patterns['default'] = '[a-zA-Z]*'
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
@@ -659,18 +694,12 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 "endfunction
 
 " <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " <C-h>, <BS>: close popup and delete backword char.
 "inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 "inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
+inoremap <expr><C-y> neocomplete#cancel_popup()
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
@@ -716,7 +745,7 @@ function! LargeFile()
 endfunction
 """----------------------------------------------------------------------------------------
 
-"source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
