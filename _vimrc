@@ -13,6 +13,9 @@ Plugin 'SuperTab'
 "Plugin 'EasyGrep'
 Plugin 'VimExplorer'
 
+"Plugin 'ianva/vim-youdao-translater'
+Plugin 'FuDesign2008/translator.vim'
+
 "Plugin 'The-NERD-tree'
 "Plugin 'mru.vim'
 Plugin 'quickrun.vim'
@@ -139,6 +142,7 @@ filetype plugin on
 let mapleader = ","
 set relativenumber
 
+set encoding=utf-8
 set fileencodings=utf-8,gbk
 set nowrap
 autocmd BufReadPost * set noswapfile
@@ -433,7 +437,12 @@ let g:rainbow_active=1
 
 "SuperTab
 let g:SuperTabRetainCompletionType = 0 
-"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+"let g:SuperTabDefaultCompletionType = '<c-x><c-u>'
+
+"translator.vim
+nnoremap <leader>tr :TranCursor<CR>
+vnoremap <leader>tr :TranCursor<CR>
+nnoremap <leader>tc :TranClose<CR>
 
 "Groovy
 au FileType groovy call AddGroovyFuncList()
