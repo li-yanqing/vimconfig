@@ -19,12 +19,12 @@ Plugin 'VimExplorer'
 Plugin 'quickrun.vim'
 
 "Plugin 'Shougo/neocomplete.vim'
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 
 Plugin 'vim-airline'
 
 Plugin 'matchit.zip'
-Plugin 'YankRing.vim'
+"Plugin 'YankRing.vim'
 Plugin 'EasyMotion'
 
 "Plugin 'terryma/vim-multiple-cursors'
@@ -42,33 +42,20 @@ Plugin 'kien/ctrlp.vim'
 "Plugin 'Decho'
 "Plugin 'vimshell-ssh'    
 "Plugin 'Shougo/vimshell.vim'
-Plugin 'Shougo/vimproc.vim'
+"Plugin 'Shougo/vimproc.vim'
 
 Plugin 'VisIncr'
 Plugin 'auto_mkdir'
 
 Plugin 'Markdown-syntax'
 Plugin 'xml.vim'
-
 Plugin 'The-NERD-Commenter'
 Plugin 'luochen1990/rainbow'
-
-
-Plugin 'mikelue/vim-maven-plugin'
-
-Plugin 'JavaDecompiler.vim'
-
 Plugin 'airblade/vim-rooter'
-
 Plugin 'luochen1990/select-and-search'
-
 Plugin 'Mark'
-
-
 "filetype log(log4j) and javalog(java exception)
 Plugin 'sxinle/vim-log-syntax'
-
-
 "color
 Plugin 'dw_colors'
 Plugin 'Color-Sampler-Pack'
@@ -112,7 +99,7 @@ set tabstop=4 "tab to space
 set expandtab
 set linespace=1
 set ve=all
-"set autochdir  "auto change to current folder
+set autochdir  "auto change to current folder
 set guifont=YaHei\ Consolas\ Hybrid:h11
 set ignorecase smartcase
 
@@ -192,7 +179,7 @@ nnoremap ;;m <Esc>:set guioptions-=m<cr>
 nnoremap ;r <Esc>:RainbowToggle<cr>
 
 "refresh file
-nnoremap <Leader>r <Esc>:e<cr>
+nnoremap <Leader>r <Esc>:checktime<cr>
 
 "nmap gc V,r<c-h>:4<cr>f{i<cr><esc>Vy<c-l>p  
 "nmap gc V,r<c-h>:3<cr>f{i<cr><esc>V,,fj
