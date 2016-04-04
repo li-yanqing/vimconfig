@@ -269,6 +269,7 @@ nnoremap ;;m <Esc>:set guioptions-=m<cr>
 nnoremap ;r <Esc>:RainbowToggle<cr>
 
 "refresh file
+nnoremap zb <Esc>zfgg<cr>
 nnoremap <Leader>r <Esc>:checktime<cr>
 
 "folder code block
@@ -284,7 +285,7 @@ nmap gc V,r
 map ZZ <nop>
 map <s-Space> <nop>
 
-""for window nav
+"for window nav
 noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
@@ -449,7 +450,7 @@ nnoremap <leader><Leader>fj :python json_line_format_write()<CR>
 nnoremap <leader><Leader>fp :python json_line_format_print()<CR>
 
 "rainbow
-let g:rainbow_active=1
+let g:rainbow_active=0
 
 "SuperTab
 let g:SuperTabRetainCompletionType = 0 

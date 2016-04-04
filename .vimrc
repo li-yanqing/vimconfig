@@ -33,11 +33,11 @@ Plugin 'rking/ag.vim'
 
 "Plugin 'AutoClose'
 Plugin 'vim-easy-align'
-Plugin 'HTML-AutoCloseTag'
+"Plugin 'HTML-AutoCloseTag'
 Plugin 'L9'
-Plugin 'VOoM'
+"Plugin 'VOoM'
 Plugin 'jsbeautify'
-Plugin 'surround.vim'
+"Plugin 'surround.vim'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'Decho'
 "Plugin 'vimshell-ssh'    
@@ -50,12 +50,20 @@ Plugin 'auto_mkdir'
 Plugin 'Markdown-syntax'
 Plugin 'xml.vim'
 Plugin 'The-NERD-Commenter'
-Plugin 'luochen1990/rainbow'
+"Plugin 'luochen1990/rainbow'
 Plugin 'airblade/vim-rooter'
 Plugin 'luochen1990/select-and-search'
 Plugin 'Mark'
 "filetype log(log4j) and javalog(java exception)
 Plugin 'sxinle/vim-log-syntax'
+
+
+"Plugin 'vim-scripts/auto_autoread.vim'
+
+Plugin 'chrisbra/vim-diff-enhanced'
+
+Plugin 'li-yanqing/vim-json-line-format' 
+
 "color
 Plugin 'dw_colors'
 Plugin 'Color-Sampler-Pack'
@@ -100,7 +108,7 @@ set expandtab
 set linespace=1
 set ve=all
 set autochdir  "auto change to current folder
-set guifont=YaHei\ Consolas\ Hybrid:h11
+set guifont=Consolas:12
 set ignorecase smartcase
 
 "auto change dir to current dir
@@ -114,28 +122,36 @@ set ignorecase smartcase
 
 "custom operation{{{
 
-"Disable q:
-map q: <Nop>
+"Disable q: but let 'q' not quickly
+"map q: <Nop>
 
 
-nnoremap mx <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
+" capitalize
+inoremap <c-j> <Esc>mzb~`za
+
+
+"nnoremap mx <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
 map <c-F11> <C-W>_<C-W><Bar>
 noremap <Leader>q <Esc>:q<cr>
+noremap <Leader><leader>q <Esc>:tabclose<cr>
 noremap <Leader>Q <Esc>:q!<cr>
-
 
 
 map <C-t> <Esc>:tabnew<cr>
 map <C-u> <Esc>:tabnext<cr>
 map <C-y> <Esc>:tabprevious<cr>
 "format json
-map <Leader><Leader>fj  !python -m json.tool<CR>
+"map <Leader><Leader>fj  !python -m json.tool<CR>
 "format xml
-map <Leader><Leader>fx  !xmllint --format --recover - 2>/dev/null <CR>
+map <Leader><Leader>fx  V:!xmllint --format --recover - 2>/dev/null <CR>
 
 "remove space 
 map <Leader><Leader>ks  :s/\s\+/ /g<CR>
 map <Leader><Leader>kS  :s/\s\+//g<CR>
+"Transform path sperator
+map <Leader><Leader>kp  :s/\\/\//g<CR>
+map <Leader><Leader>kP  :s/\\/\\\\/g<CR>
+
 
 "base64 encode
 map <Leader><Leader>be  y<Esc>gv:!base64 <CR>kp
@@ -179,7 +195,11 @@ nnoremap ;;m <Esc>:set guioptions-=m<cr>
 nnoremap ;r <Esc>:RainbowToggle<cr>
 
 "refresh file
+nnoremap zb <Esc>zfgg<cr>
 nnoremap <Leader>r <Esc>:checktime<cr>
+
+"folder code block
+nnoremap <Leader><Leader>cc f{zf%
 
 "nmap gc V,r<c-h>:4<cr>f{i<cr><esc>Vy<c-l>p  
 "nmap gc V,r<c-h>:3<cr>f{i<cr><esc>V,,fj
@@ -255,8 +275,8 @@ endif
 let g:ag_prg="ag --vimgrep --smart-case"
 let g:ag_working_path_mode="r"
 let g:ag_highlight=1
-nnoremap <silent> <Leader>vv  <Esc>:Ag <cword><cr>
-nnoremap <silent> <Leader>vf  <Esc>:AgFile <cword><cr>
+"nnoremap <silent> <Leader>vv  <Esc>:Ag <cword><cr>
+"nnoremap <silent> <Leader>vf  <Esc>:AgFile <cword><cr>
 "vnoremap \fv  :call SeachSelectInFile()<cr>
 
 "function! SeachSelectInFile()  range
@@ -297,7 +317,7 @@ endfunction
 
 "QuickRun
 nmap <Leader><Leader>r <Esc>:QuickRun<cr>
-vmap <Leader><Leader>r :QuickRunbash<cr>
+vmap <Leader><Leader>r :QuickRun bash<cr>
 let g:quickrun_config = {}
 let g:quickrun_config.markdown = {
             \ 'type': 'markdown/pandoc',
@@ -309,12 +329,16 @@ let g:quickrun_config.markdown = {
 "select & search
 let g:select_and_search_active = 3
 
+"vim-json-line-format
+nnoremap <leader><Leader>fj :python json_line_format_write()<CR>
+nnoremap <leader><Leader>fp :python json_line_format_print()<CR>
+
 "rainbow
-let g:rainbow_active=1
+let g:rainbow_active=0
 
 "SuperTab
 let g:SuperTabRetainCompletionType = 0 
-""let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 
 
 
@@ -341,7 +365,11 @@ map <Leader>p <Esc>:YRShow<cr>
 let g:yankring_max_history = 100
 
 "EasyMotion
-let g:EasyMotion_leader_key = ','
+let g:EasyMotion_leader_key = '<leader>'
+let g:EasyMotion_mapping_j = '<leader>jl'
+let g:EasyMotion_mapping_k = '<leader>kl'
+"let g:EasyMotion_do_mapping = 0
+
 
 "EasyAlign
 vmap <Enter> <Plug>(EasyAlign)
@@ -411,15 +439,15 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 "" Recommended key-mappings.
 "" <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function()
-"  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-"  " For no inserting <CR> key.
-"  "return pumvisible() ? "\<C-y>" : "\<CR>"
-"endfunction
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
 
 " <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " <C-h>, <BS>: close popup and delete backword char.
 "inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
@@ -452,5 +480,24 @@ let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
+"""----------------------------------------------------------------------------------------
+" file is large from 10mb
+let g:LargeFile = 1024 * 1024 * 10
+augroup LargeFile 
+ autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+augroup END
+
+function! LargeFile()
+ " no syntax highlighting etc
+ set eventignore+=FileType
+ " save memory when other file is viewed
+ setlocal bufhidden=unload
+ " is read-only (write with :w new_filename)
+ setlocal buftype=nowrite
+ " no undo possible
+ setlocal undolevels=-1
+ " display message
+ autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
+endfunction
 """----------------------------------------------------------------------------------------
 
