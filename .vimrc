@@ -60,7 +60,7 @@ Plugin 'sxinle/vim-log-syntax'
 
 "Plugin 'vim-scripts/auto_autoread.vim'
 
-Plugin 'chrisbra/vim-diff-enhanced'
+"Plugin 'chrisbra/vim-diff-enhanced'
 
 Plugin 'li-yanqing/vim-json-line-format' 
 

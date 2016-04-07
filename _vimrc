@@ -114,6 +114,7 @@ Plugin 'itchyny/thumbnail.vim'
 "filetype log(log4j) and javalog(java exception)
 Plugin 'sxinle/vim-log-syntax'
 
+Plugin 'tfnico/vim-gradle'
 
 "Plugin 'vim-scripts/auto_autoread.vim'
 
