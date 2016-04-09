@@ -28,7 +28,7 @@ Plugin 'phpcomplete.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
 
-Plugin 'vim-scripts/notes.vim'
+"Plugin 'vim-scripts/notes.vim'
 
 Plugin 'vim-scripts/togglenumber'
 Plugin 'vim-airline'
