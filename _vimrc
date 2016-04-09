@@ -115,6 +115,7 @@ Plugin 'itchyny/thumbnail.vim'
 Plugin 'sxinle/vim-log-syntax'
 
 Plugin 'tfnico/vim-gradle'
+Plugin 'ujihisa/vimshell-ssh'
 
 "Plugin 'vim-scripts/auto_autoread.vim'
 
@@ -538,9 +539,11 @@ endfunction
 
 "Rooter 
 let g:rooter_use_lcd = 1 " local buffer change 
-let g:rooter_silent_chdir = 1 "quietly change dir
+let g:rooter_silent_chdir = 0 "quietly change dir
 let g:rooter_manual_only = 0 "don't auto change to root directory
 map <silent> <Leader>cd <Plug>RooterChangeToRootDirectory
+map  <Leader>ce <Esc>:set autochdir<cr>
+map  ;ce <Esc>:set noautochdir<cr>
 
 "YankRing
 map <Leader>p <Esc>:YRShow<cr>
