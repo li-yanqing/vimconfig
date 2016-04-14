@@ -196,7 +196,7 @@ nnoremap ;r <Esc>:RainbowToggle<cr>
 
 "refresh file
 nnoremap zb <Esc>zfgg<cr>
-nnoremap <Leader>r <Esc>:checktime<cr>
+nnoremap <Leader>r <Esc>:e!<cr>
 
 "folder code block
 nnoremap <Leader><Leader>cc f{zf%

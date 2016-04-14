@@ -102,7 +102,7 @@ Plugin 'airblade/vim-rooter'
 
 "Plugin 'artur-shaik/vim-javacomplete2'
 "Plugin 'msanders/snipmate.vim'
-Plugin 'Java-Syntax-and-Folding'
+Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
 
 Plugin 'luochen1990/select-and-search'
 
@@ -128,8 +128,11 @@ Plugin 'dw_colors'
 Plugin 'vim-scripts/xoria256.vim'
 Plugin 'Color-Sampler-Pack'
 Plugin 'ScrollColors'
-Plugin 'morhetz/gruvbox'
 Plugin 'tomasr/molokai'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'zeis/vim-kolor'
+Plugin 'sandeepsinghmails/Dev_Delight'
+
 """----------------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -161,7 +164,6 @@ set directory=$TEMP
 set sm "match the { or ( or [
 set ai "auto align
 set sw=4 "tab length
-syntax on 
 set textwidth=0 "maxlength of line
 set conceallevel=2 "for json format
 set autoread "auto load file change
@@ -180,6 +182,8 @@ set guifont=YaHei\ Consolas\ Hybrid:h12
 set ignorecase smartcase
 set incsearch
 set autoindent
+
+
 
 "auto change dir to current dir
 "au BufRead,BufNewFile * cd %:p:h
@@ -326,15 +330,29 @@ endif
 
 
 "color scheme
+syntax on 
+"set background=light
+set background=dark
 "colorscheme desert
-colorscheme desertEx
-"colorscheme molokai
+"colorscheme desertEx
 "colorscheme desert256
 "colorscheme xoria256 
 "colorscheme eclipse 
 "colorscheme moria 
 "colorscheme calmbreeze
 
+
+"colorscheme lucius 
+"LuciusDark
+
+colorscheme molokai
+let g:molokai_original = 1
+
+"colorscheme kolor
+"let g:kolor_italic=1                    " Enable italic. Default: 1
+"let g:kolor_bold=1                      " Enable bold. Default: 1
+"let g:kolor_underlined=1                " Enable underline. Default: 0
+"let g:kolor_alternative_matchparen=1    " Gray 'MatchParen' color. Default: 0
 
 "for interface
 "set guioptions-=T "tool bar
@@ -524,6 +542,7 @@ endfunction
 "set  tags-=e:\programs\vim\jdk-tags
 "set  tags+=e:\programs\vim\jdk-tags
 "endfunction
+
 
 "Mark
 map <Leader>mm <Plug>MarkSet
