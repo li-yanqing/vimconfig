@@ -10,7 +10,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 """----------------------------------------------------------------------------------------
 Plugin 'SuperTab'
-"Plugin 'EasyGrep'
+Plugin 'dkprice/vim-easygrep'
 Plugin 'VimExplorer'
 
 "Plugin 'ianva/vim-youdao-translater'
@@ -87,7 +87,7 @@ Plugin 'auto_mkdir'
 "Plugin 'Markdown-syntax'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'xml.vim'
+"Plugin 'xml.vim'
 
 Plugin 'The-NERD-Commenter'
 Plugin 'luochen1990/rainbow'
@@ -198,6 +198,7 @@ set autoindent
 
 "Disable q: but let 'q' not quickly
 "map q: <Nop>
+map / /\v
 
 
 " capitalize
@@ -251,7 +252,7 @@ nnoremap <Space> <Esc>viw
 "select more words
 vnoremap <Space> e
 "save file
-nnoremap <Leader>s <Esc>:w<cr>
+nnoremap <Leader>s <Esc>:update<cr>
 "wrap
 nnoremap ;w  :call ToggleWrap()<cr>
 function! ToggleWrap()
@@ -392,17 +393,16 @@ noremap ,u <esc>:GundoToggle<cr>
 
 
 "Ag
-if executable('ag')
-    " Use Ag over Grep
-    set grepprg=ag\ --nogroup\ --nocolor
-endif
+"if executable('ag')
+    "" Use Ag over Grep
+    "set grepprg=ag\ --nogroup\ --nocolor
+"endif
 "configure ag.vim to always start searching from your project root instead of the cwd
-let g:ag_prg="ag --vimgrep --smart-case"
-let g:ag_working_path_mode="r"
-let g:ag_highlight=1
-nnoremap <silent> <Leader>vv  <Esc>:Ag! <cword><cr>
-nnoremap <silent> <Leader>vf  <Esc>:AgFile! <cword><cr>
-"vnoremap \fv  :call SeachSelectInFile()<cr>
+"let g:ag_prg="ag --vimgrep --smart-case"
+"let g:ag_working_path_mode="r"
+"let g:ag_highlight=1
+"nnoremap  <Leader>vv  <Esc>:Ag <cword><cr>
+"nnoremap  <Leader>vf  <Esc>:AgFile <cword><cr>
 
 "function! SeachSelectInFile()  range
     "let w = select_and_search#get_selected_text()
@@ -414,10 +414,16 @@ nnoremap <silent> <Leader>vf  <Esc>:AgFile! <cword><cr>
 
 
 "EasyGrep
-"let g:EasyGrepRecursive = 1
-"let g:EasyGrepOpenWindowOnMatch=0
-"let g:EasyGrepFilesToExclude = "*.class, *.jar, *.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
-"let g:EasyGrepCommand=1
+"if executable('grep')
+    "set grepprg=grep
+"endif
+let g:EasyGrepRecursive = 1
+let g:EasyGrepOpenWindowOnMatch=0
+let g:EasyGrepFilesToExclude = ".git, *.class, *.jar, *.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
+let EasyGrepHidden=1
+let EasyGrepWindow=1
+let EasyGrepJumpToMatch=0
+let g:EasyGrepCommand=0
 
 
 "vim-http-client
@@ -470,7 +476,7 @@ nnoremap <leader><Leader>fj :python json_line_format_write()<CR>
 nnoremap <leader><Leader>fp :python json_line_format_print()<CR>
 
 "rainbow
-let g:rainbow_active=0
+let g:rainbow_active=1
 
 "SuperTab
 let g:SuperTabRetainCompletionType = 0 

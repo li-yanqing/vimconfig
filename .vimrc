@@ -29,10 +29,10 @@ Plugin 'EasyMotion'
 
 "Plugin 'terryma/vim-multiple-cursors'
 
-Plugin 'rking/ag.vim'
+"Plugin 'rking/ag.vim'
 
 "Plugin 'AutoClose'
-Plugin 'vim-easy-align'
+"Plugin 'vim-easy-align'
 "Plugin 'HTML-AutoCloseTag'
 Plugin 'L9'
 "Plugin 'VOoM'
@@ -47,8 +47,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'VisIncr'
 Plugin 'auto_mkdir'
 
-Plugin 'Markdown-syntax'
-Plugin 'xml.vim'
+"Plugin 'Markdown-syntax'
+"Plugin 'xml.vim'
 Plugin 'The-NERD-Commenter'
 "Plugin 'luochen1990/rainbow'
 Plugin 'airblade/vim-rooter'
@@ -90,7 +90,7 @@ let mapleader = ","
 set nu
 set fileencodings=utf-8,gbk
 set wrap
-autocmd BufReadPost * set noswapfile
+set noswapfile
 
 set directory=$TEMP
 
@@ -347,12 +347,6 @@ map <Leader>mm <Plug>MarkSet
 map <Leader>mn <Plug>MarkClear
 map <Leader>mr <Plug>MarkRegex
 
-"PHP
-au FileType php call PHPFuncList()
-function! PHPFuncList()
-    set  tags-=e:\programs\vim\php-tags, tags-=e:\programs\vim\php-vk-tags
-    set  tags+=e:\programs\vim\php-tags, tags+=e:\programs\vim\php-vk-tags
-endfunction
 
 "Rooter 
 let g:rooter_use_lcd = 1 " local buffer change 
