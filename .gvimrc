@@ -519,12 +519,12 @@ endfunction
 
 
 "JAVA
-"au FileType java call AddJAVAFuncList()
-"function! AddJAVAFuncList()
-"let g:SuperTabDefaultCompletionType = "<c-x><c-]>"
-"set  tags-=e:\programs\vim\jdk-tags
-"set  tags+=e:\programs\vim\jdk-tags
-"endfunction
+au FileType java call AddJAVAFuncList()
+function! AddJAVAFuncList()
+let g:SuperTabDefaultCompletionType = "<c-x><c-]>"
+set  tags-=~/.vimconfig/jdk-tags
+set  tags+=~/.vimconfig/jdk-tags
+endfunction
 
 "Mark
 map <Leader>mm <Plug>MarkSet
@@ -735,6 +735,7 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplete#sources#dictionary#dictionaries = {
             \ 'default' : '',
             \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
+            \ 'java' : $HOME.'/.vimconfig/jdk.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
             \ 'scheme' : $HOME.'/.gosh_completions'
             \ }
@@ -744,6 +745,13 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '[a-zA-Z]*'
+
+if !exists('g:neocomplete#delimiter_patterns')
+let g:neocomplete#delimiter_patterns= {}
+endif
+let g:neocomplete#delimiter_patterns.java = ['.']
+
+
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
