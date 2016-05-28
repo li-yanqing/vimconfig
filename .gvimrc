@@ -690,6 +690,10 @@ let g:syntastic_check_on_wq = 0
 "Eclim
 let g:EclimKeepLocalHistory=1
 let g:EclimLoggingDisabled=1
+let g:EclimBuffersDefaultAction='tabnew'
+let g:EclimJavaSearchSingleResult='tabnew'
+let g:EclimDefaultFileOpenAction='tabnew'
+let g:EclimJavaCallHierarchyDefaultAction='tabnew'
 inoremap <D-/> <c-x><c-u>
 cabbrev pcd ProjectCD
 
