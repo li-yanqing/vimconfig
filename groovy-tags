@@ -1,0 +1,343 @@
+AbstractCollection 		  	/^AbstractCollection$/;	e	
+AbstractMap		/^AbstractMap$/;	e	
+BigDecimal	 	/^BigDecimal$/;	e	
+BigInteger	 	/^BigInteger$/;	e	
+BitSet	 	/^BitSet$/;	e	
+Boolean	 	/^Boolean$/;	e	
+BufferedReader	 	/^BufferedReader$/;	e	
+BufferedWriter	 	/^BufferedWriter$/;	e	
+ButtonGroup	 	/^ButtonGroup$/;	e	
+Byte[]	 	/^Byte[]$/;	e	
+Calendar	 	/^Calendar$/;	e	
+Character	 	/^Character$/;	e	
+Class	 	/^Class$/;	e	
+ClassLoader	 	/^ClassLoader$/;	e	
+Container	 	/^Container$/;	e	
+DataInputStream	 	/^DataInputStream$/;	e	
+Date	 	/^Date$/;	e	
+DefaultComboBoxModel	 	/^DefaultComboBoxModel$/;	e	
+DefaultListModel	 	/^DefaultListModel$/;	e	
+DefaultMutableTreeNode	 	/^DefaultMutableTreeNode$/;	e	
+DefaultTableModel	 	/^DefaultTableModel$/;	e	
+Double	 	/^Double$/;	e	
+Enum	 	/^Enum$/;	e	
+File	 	/^File$/;	e	
+Float	 	/^Float$/;	e	
+InputStream	 	/^InputStream$/;	e	
+Integer	 	/^Integer$/;	e	
+JComboBox	 	/^JComboBox$/;	e	
+JMenu	 	/^JMenu$/;	e	
+JMenuBar	 	/^JMenuBar$/;	e	
+JPopupMenu	 	/^JPopupMenu$/;	e	
+JTabbedPane	 	/^JTabbedPane$/;	e	
+JToolBar	 	/^JToolBar$/;	e	
+Long	 	/^Long$/;	e	
+Matcher	 	/^Matcher$/;	e	
+Number	 	/^Number$/;	e	
+Object	 	/^Object$/;	e	
+ObjectInputStream	 	/^ObjectInputStream$/;	e	
+ObjectOutputStream	 	/^ObjectOutputStream$/;	e	
+Object[]	 	/^Object[]$/;	e	
+OutputStream	 	/^OutputStream$/;	e	
+Pattern	 	/^Pattern$/;	e	
+PrintStream	 	/^PrintStream$/;	e	
+PrintWriter	 	/^PrintWriter$/;	e	
+Process	 	/^Process$/;	e	
+Reader	 	/^Reader$/;	e	
+ResourceBundle	 	/^ResourceBundle$/;	e	
+ServerSocket	 	/^ServerSocket$/;	e	
+Socket	 	/^Socket$/;	e	
+String	 	/^String$/;	e	
+StringBuffer	 	/^StringBuffer$/;	e	
+StringBuilder	 	/^StringBuilder$/;	e	
+String[]	 	/^String[]$/;	e	
+Thread	 	/^Thread$/;	e	
+Timer	 	/^Timer$/;	e	
+Timestamp	 	/^Timestamp$/;	e	
+TreePath	 	/^TreePath$/;	e	
+URL	 	/^URL$/;	e	
+Writer	 	/^Writer$/;	e	
+abs	 	/^abs$/;	e	abs()
+accept	 	/^accept$/;	e	(Closure)
+addAll	 	/^addAll$/;	e	(int,Object[])
+addShutdownHook	 	/^addShutdownHook$/;	e	(Closure)
+and	 	/^and$/;	e	(BitSet)
+any	 	/^any$/;	e	(Closure)
+append	 	/^append$/;	e	(Object,String)
+asBoolean	 	/^asBoolean$/;	e	asBoolean()
+asImmutable	 	/^asImmutable$/;	e	asImmutable()
+asList	 	/^asList$/;	e	asList()
+asSynchronized	 	/^asSynchronized$/;	e	asSynchronized()
+asType	 	/^asType$/;	e	(Class)
+asWritable	 	/^asWritable$/;	e	(String)
+bitwiseNegate	 	/^bitwiseNegate$/;	e	bitwiseNegate()
+boolean[]	 	/^boolean[]$/;	e	
+byte[]	 	/^byte[]$/;	e	
+capitalize	 	/^capitalize$/;	e	capitalize()
+center	 	/^center$/;	e	(Number,String)
+char[]	 	/^char[]$/;	e	
+clear	 	/^clear$/;	e	clear()
+clearTime	 	/^clearTime$/;	e	clearTime()
+closeStreams	 	/^closeStreams$/;	e	closeStreams()
+collate	 	/^collate$/;	e	(int,int,boolean)
+collect	 	/^collect$/;	e	(Collection,Closure)
+collectAll	 	/^collectAll$/;	e	(Collection,Closure)
+collectEntries	 	/^collectEntries$/;	e	(Map,Closure)
+collectMany	 	/^collectMany$/;	e	(Collection,Closure)
+collectNested	 	/^collectNested$/;	e	(Closure)
+collectReplacements	 	/^collectReplacements$/;	e	(Closure)
+combinations	 	/^combinations$/;	e	(Closure)
+compareTo	 	/^compareTo$/;	e	(Number)
+consumeProcessErrorStream	 	/^consumeProcessErrorStream$/;	e	(Appendable)
+consumeProcessOutput	 	/^consumeProcessOutput$/;	e	(Appendable,Appendable)
+consumeProcessOutputStream	 	/^consumeProcessOutputStream$/;	e	(Appendable)
+contains	 	/^contains$/;	e	(Object)
+containsAll	 	/^containsAll$/;	e	(Object[])
+copyWith	 	/^copyWith$/;	e	(Map)
+count	 	/^count$/;	e	(Object)
+countBy	 	/^countBy$/;	e	(Closure)
+createTempDir	 	/^createTempDir$/;	e	(String,String)
+decodeBase64	 	/^decodeBase64$/;	e	decodeBase64()
+decodeHex	 	/^decodeHex$/;	e	decodeHex()
+deleteDir	 	/^deleteDir$/;	e	deleteDir()
+denormalize	 	/^denormalize$/;	e	denormalize()
+directorySize	 	/^directorySize$/;	e	directorySize()
+disjoint	 	/^disjoint$/;	e	(Collection)
+div	 	/^div$/;	e	(Number)
+double	 	/^double$/;	e	
+double[]	 	/^double[]$/;	e	
+downto	 	/^downto$/;	e	(Number,Closure)
+drop	 	/^drop$/;	e	(int)
+dropWhile	 	/^dropWhile$/;	e	(Closure)
+dump	 	/^dump$/;	e	dump()
+each	 	/^each$/;	e	(Closure)
+eachByte	 	/^eachByte$/;	e	(Closure)
+eachCombination	 	/^eachCombination$/;	e	(Closure)
+eachDir	 	/^eachDir$/;	e	(Closure)
+eachDirMatch	 	/^eachDirMatch$/;	e	(Object,Closure)
+eachDirRecurse	 	/^eachDirRecurse$/;	e	(Closure)
+eachFile	 	/^eachFile$/;	e	(Closure)
+eachFileMatch	 	/^eachFileMatch$/;	e	(Object,Closure)
+eachFileRecurse	 	/^eachFileRecurse$/;	e	(Closure)
+eachLine	 	/^eachLine$/;	e	(String,int,Closure)
+eachMatch	 	/^eachMatch$/;	e	(Pattern,Closure)
+eachObject	 	/^eachObject$/;	e	(Closure)
+eachPermutation	 	/^eachPermutation$/;	e	(Closure)
+eachWithIndex	 	/^eachWithIndex$/;	e	(Closure)
+encodeBase64	 	/^encodeBase64$/;	e	(boolean)
+encodeHex	 	/^encodeHex$/;	e	encodeHex()
+equals	 	/^equals$/;	e	(int[])
+every	 	/^every$/;	e	(Closure)
+execute	 	/^execute$/;	e	(List,File)
+expand	 	/^expand$/;	e	(int)
+expandLine	 	/^expandLine$/;	e	(int)
+filterLine	 	/^filterLine$/;	e	(String,Closure)
+find	 	/^find$/;	e	(Closure)
+findAll	 	/^findAll$/;	e	(Closure)
+findIndexOf	 	/^findIndexOf$/;	e	(int,Closure)
+findIndexValues	 	/^findIndexValues$/;	e	(Number,Closure)
+findLastIndexOf	 	/^findLastIndexOf$/;	e	(int,Closure)
+findResult	 	/^findResult$/;	e	(Object,Closure)
+findResults	 	/^findResults$/;	e	(Closure)
+first	 	/^first$/;	e	first()
+flatten	 	/^flatten$/;	e	flatten()
+float	 	/^float$/;	e	
+float[]	 	/^float[]$/;	e	
+format	 	/^format$/;	e	(String,TimeZone)
+get	 	/^get$/;	e	(Object,Object)
+getAt	 	/^getAt$/;	e	(Collection)
+getBundle	 	/^getBundle$/;	e	(String,Locale)
+getBytes	 	/^getBytes$/;	e	getBytes()
+getChars	 	/^getChars$/;	e	getChars()
+getCount	 	/^getCount$/;	e	getCount()
+getDateString	 	/^getDateString$/;	e	getDateString()
+getDateTimeString	 	/^getDateTimeString$/;	e	getDateTimeString()
+getErr	 	/^getErr$/;	e	getErr()
+getIn	 	/^getIn$/;	e	getIn()
+getLastMatcher	 	/^getLastMatcher$/;	e	getLastMatcher()
+getMetaClass	 	/^getMetaClass$/;	e	getMetaClass()
+getMetaPropertyValues	 	/^getMetaPropertyValues$/;	e	getMetaPropertyValues()
+getOut	 	/^getOut$/;	e	getOut()
+getProperties	 	/^getProperties$/;	e	getProperties()
+getRootLoader	 	/^getRootLoader$/;	e	getRootLoader()
+getText	 	/^getText$/;	e	(String)
+getTimeString	 	/^getTimeString$/;	e	getTimeString()
+grep	 	/^grep$/;	e	(Object)
+groupBy	 	/^groupBy$/;	e	(List)
+groupEntriesBy	 	/^groupEntriesBy$/;	e	(Closure)
+hasGroup	 	/^hasGroup$/;	e	hasGroup()
+hasProperty	 	/^hasProperty$/;	e	(String)
+head	 	/^head$/;	e	head()
+identity	 	/^identity$/;	e	(Closure)
+implies	 	/^implies$/;	e	(Boolean)
+inject	 	/^inject$/;	e	(Object,Closure)
+inspect	 	/^inspect$/;	e	inspect()
+int[]	 	/^int[]$/;	e	
+intdiv	 	/^intdiv$/;	e	(Number)
+intersect	 	/^intersect$/;	e	(Map)
+invokeMethod	 	/^invokeMethod$/;	e	(String,Object)
+is	 	/^is$/;	e	(Object)
+isAllWhitespace	 	/^isAllWhitespace$/;	e	isAllWhitespace()
+isBigDecimal	 	/^isBigDecimal$/;	e	isBigDecimal()
+isBigInteger	 	/^isBigInteger$/;	e	isBigInteger()
+isCase	 	/^isCase$/;	e	(Object)
+isDigit	 	/^isDigit$/;	e	isDigit()
+isDouble	 	/^isDouble$/;	e	isDouble()
+isFloat	 	/^isFloat$/;	e	isFloat()
+isInteger	 	/^isInteger$/;	e	isInteger()
+isLetter	 	/^isLetter$/;	e	isLetter()
+isLetterOrDigit	 	/^isLetterOrDigit$/;	e	isLetterOrDigit()
+isLong	 	/^isLong$/;	e	isLong()
+isLowerCase	 	/^isLowerCase$/;	e	isLowerCase()
+isNumber	 	/^isNumber$/;	e	isNumber()
+isUpperCase	 	/^isUpperCase$/;	e	isUpperCase()
+isWhitespace	 	/^isWhitespace$/;	e	isWhitespace()
+iterator	 	/^iterator$/;	e	iterator()
+join	 	/^join$/;	e	(String)
+last	 	/^last$/;	e	last()
+leftShift	 	/^leftShift$/;	e	(Object)
+long	 	/^long$/;	e	
+long[]	 	/^long[]$/;	e	
+matches	 	/^matches$/;	e	(Pattern)
+matchesPartially	 	/^matchesPartially$/;	e	matchesPartially()
+max	 	/^max$/;	e	(Closure)
+metaClass	 	/^metaClass$/;	e	(Closure)
+min	 	/^min$/;	e	(Closure)
+minus	 	/^minus$/;	e	(Collection)
+mixin	 	/^mixin$/;	e	(List)
+mod	 	/^mod$/;	e	(Number)
+multiply	 	/^multiply$/;	e	(Number)
+newDataInputStream	 	/^newDataInputStream$/;	e	newDataInputStream()
+newDataOutputStream	 	/^newDataOutputStream$/;	e	newDataOutputStream()
+newInputStream	 	/^newInputStream$/;	e	newInputStream()
+newInstance	 	/^newInstance$/;	e	(Object[])
+newObjectInputStream	 	/^newObjectInputStream$/;	e	(ClassLoader)
+newObjectOutputStream	 	/^newObjectOutputStream$/;	e	newObjectOutputStream()
+newOutputStream	 	/^newOutputStream$/;	e	newOutputStream()
+newPrintWriter	 	/^newPrintWriter$/;	e	(String)
+newReader	 	/^newReader$/;	e	(String)
+newWriter	 	/^newWriter$/;	e	(String,boolean)
+next	 	/^next$/;	e	next()
+normalize	 	/^normalize$/;	e	normalize()
+numberAwareCompareTo	 	/^numberAwareCompareTo$/;	e	(Comparable)
+or	 	/^or$/;	e	(BitSet)
+padLeft	 	/^padLeft$/;	e	(Number,String)
+padRight	 	/^padRight$/;	e	(Number,String)
+parse	 	/^parse$/;	e	(String,String)
+parseToStringDate	 	/^parseToStringDate$/;	e	(String)
+permutations	 	/^permutations$/;	e	(Closure)
+pipeTo	 	/^pipeTo$/;	e	(Process)
+plus	 	/^plus$/;	e	(Map)
+pop	 	/^pop$/;	e	pop()
+power	 	/^power$/;	e	(Integer)
+previous	 	/^previous$/;	e	previous()
+print	 	/^print$/;	e	(Object)
+printf	 	/^printf$/;	e	(String,Object[])
+println	 	/^println$/;	e	(Object)
+push	 	/^push$/;	e	(Object)
+putAll	 	/^putAll$/;	e	(Collection)
+putAt	 	/^putAt$/;	e	(int,MutableTreeNode)
+readBytes	 	/^readBytes$/;	e	readBytes()
+readLine	 	/^readLine$/;	e	readLine()
+readLines	 	/^readLines$/;	e	(String)
+removeAll	 	/^removeAll$/;	e	(Object[])
+renameTo	 	/^renameTo$/;	e	(URI)
+replaceAll	 	/^replaceAll$/;	e	(Pattern,String)
+replaceFirst	 	/^replaceFirst$/;	e	(Pattern,String)
+respondsTo	 	/^respondsTo$/;	e	(String,Object[])
+retainAll	 	/^retainAll$/;	e	(Object[])
+reverse	 	/^reverse$/;	e	(boolean)
+reverseEach	 	/^reverseEach$/;	e	(Closure)
+rightShift	 	/^rightShift$/;	e	(Number)
+rightShiftUnsigned	 	/^rightShiftUnsigned$/;	e	(Number)
+round	 	/^round$/;	e	(int)
+runAfter	 	/^runAfter$/;	e	(int,Closure)
+serialize	 	/^serialize$/;	e	serialize()
+set	 	/^set$/;	e	(Map)
+setBytes	 	/^setBytes$/;	e	(byte[])
+setIndex	 	/^setIndex$/;	e	(int)
+setMetaClass	 	/^setMetaClass$/;	e	(MetaClass)
+setText	 	/^setText$/;	e	(String,String)
+short[]	 	/^short[]$/;	e	
+size	 	/^size$/;	e	size()
+sleep	 	/^sleep$/;	e	(long,Closure)
+sort	 	/^sort$/;	e	sort()
+split	 	/^split$/;	e	(Closure)
+splitEachLine	 	/^splitEachLine$/;	e	(Pattern,String,Closure)
+spread	 	/^spread$/;	e	spread()
+sprintf	 	/^sprintf$/;	e	(String,Object[])
+start	 	/^start$/;	e	(String,Closure)
+startDaemon	 	/^startDaemon$/;	e	(String,Closure)
+step	 	/^step$/;	e	(Number,Number,Closure)
+stripIndent	 	/^stripIndent$/;	e	(int)
+stripMargin	 	/^stripMargin$/;	e	(String)
+subMap	 	/^subMap$/;	e	(Collection)
+subsequences	 	/^subsequences$/;	e	subsequences()
+sum	 	/^sum$/;	e	(Object,Closure)
+tail	 	/^tail$/;	e	tail()
+take	 	/^take$/;	e	(int)
+takeWhile	 	/^takeWhile$/;	e	(Closure)
+times	 	/^times$/;	e	(Closure)
+toArrayString	 	/^toArrayString$/;	e	toArrayString()
+toBigDecimal	 	/^toBigDecimal$/;	e	toBigDecimal()
+toBigInteger	 	/^toBigInteger$/;	e	toBigInteger()
+toBoolean	 	/^toBoolean$/;	e	toBoolean()
+toCalendar	 	/^toCalendar$/;	e	toCalendar()
+toCharacter	 	/^toCharacter$/;	e	toCharacter()
+toDouble	 	/^toDouble$/;	e	toDouble()
+toFloat	 	/^toFloat$/;	e	toFloat()
+toInteger	 	/^toInteger$/;	e	toInteger()
+toList	 	/^toList$/;	e	toList()
+toListString	 	/^toListString$/;	e	(int)
+toLong	 	/^toLong$/;	e	toLong()
+toLowerCase	 	/^toLowerCase$/;	e	toLowerCase()
+toMapString	 	/^toMapString$/;	e	(int)
+toRowResult	 	/^toRowResult$/;	e	toRowResult()
+toSet	 	/^toSet$/;	e	toSet()
+toShort	 	/^toShort$/;	e	toShort()
+toSpreadMap	 	/^toSpreadMap$/;	e	toSpreadMap()
+toString	 	/^toString$/;	e	toString()
+toTimestamp	 	/^toTimestamp$/;	e	toTimestamp()
+toURI	 	/^toURI$/;	e	toURI()
+toURL	 	/^toURL$/;	e	toURL()
+toUpperCase	 	/^toUpperCase$/;	e	toUpperCase()
+tokenize	 	/^tokenize$/;	e	(String)
+tr	 	/^tr$/;	e	(String,String)
+transformChar	 	/^transformChar$/;	e	(Writer,Closure)
+transformLine	 	/^transformLine$/;	e	(Writer,Closure)
+transpose	 	/^transpose$/;	e	transpose()
+traverse	 	/^traverse$/;	e	(Map,Closure)
+trunc	 	/^trunc$/;	e	(int)
+unaryMinus	 	/^unaryMinus$/;	e	unaryMinus()
+unaryPlus	 	/^unaryPlus$/;	e	unaryPlus()
+unexpand	 	/^unexpand$/;	e	(int)
+unexpandLine	 	/^unexpandLine$/;	e	(int)
+unique	 	/^unique$/;	e	(Comparator)
+updated	 	/^updated$/;	e	(Map)
+upto	 	/^upto$/;	e	(Number,Closure)
+use	 	/^use$/;	e	(List,Closure)
+waitForOrKill	 	/^waitForOrKill$/;	e	(long)
+waitForProcessOutput	 	/^waitForProcessOutput$/;	e	(Appendable,Appendable)
+with	 	/^with$/;	e	(Closure)
+withCloseable	 	/^withCloseable$/;	e	(Closure)
+withDataInputStream	 	/^withDataInputStream$/;	e	(Closure)
+withDataOutputStream	 	/^withDataOutputStream$/;	e	(Closure)
+withDefault	 	/^withDefault$/;	e	(Closure)
+withEagerDefault	 	/^withEagerDefault$/;	e	(Closure)
+withFormatter	 	/^withFormatter$/;	e	(Locale,Closure)
+withInputStream	 	/^withInputStream$/;	e	(Closure)
+withLazyDefault	 	/^withLazyDefault$/;	e	(Closure)
+withObjectInputStream	 	/^withObjectInputStream$/;	e	(ClassLoader,Closure)
+withObjectOutputStream	 	/^withObjectOutputStream$/;	e	(Closure)
+withObjectStreams	 	/^withObjectStreams$/;	e	(Closure)
+withOutputStream	 	/^withOutputStream$/;	e	(Closure)
+withPrintWriter	 	/^withPrintWriter$/;	e	(String,Closure)
+withReader	 	/^withReader$/;	e	(String,Closure)
+withStream	 	/^withStream$/;	e	(Closure)
+withStreams	 	/^withStreams$/;	e	(Closure)
+withTraits	 	/^withTraits$/;	e	(Class)
+withWriter	 	/^withWriter$/;	e	(String,Closure)
+withWriterAppend	 	/^withWriterAppend$/;	e	(String,Closure)
+write	 	/^write$/;	e	(String,String)
+writeLine	 	/^writeLine$/;	e	(String)
+xor	 	/^xor$/;	e	(BitSet)
