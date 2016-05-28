@@ -26,7 +26,7 @@ Plugin 'myusuf3/numbers.vim'
 Plugin 'phpcomplete.vim'
 
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-abolish'
+"Plugin 'tpope/vim-abolish'
 
 "Plugin 'vim-scripts/notes.vim'
 
@@ -100,8 +100,6 @@ Plugin 'JavaDecompiler.vim'
 
 Plugin 'airblade/vim-rooter'
 
-"Plugin 'artur-shaik/vim-javacomplete2'
-"Plugin 'msanders/snipmate.vim'
 Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
 
 Plugin 'luochen1990/select-and-search'
@@ -292,16 +290,11 @@ nmap gc V,r
 map ZZ <nop>
 map <s-Space> <nop>
 
-"for window nav
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-H> <C-W>h
-noremap <C-L> <C-W>l
 
-"inoremap <C-J> <esc><C-W>j
-"inoremap <C-K> <esc><C-W>k
-"inoremap <C-H> <esc><C-W>h
-"inoremap <C-L> <esc><C-W>l
+noremap <C-J> <esc><C-W>j
+noremap <C-K> <esc><C-W>k
+noremap <C-H> <esc><C-W>h
+noremap <C-L> <esc><C-W>l
 
 nmap <c-left> <c-w><
 nmap <c-right> <c-w>>
@@ -689,10 +682,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"javacomplete2
-"autocmd FileType java set omnifunc=javacomplete#Complete
-"nmap <Leader>i <Plug>(JavaComplete-Imports-Add)
-"imap <Leader>i <Plug>(JavaComplete-Imports-Add)
 
 "Eclim
 let g:EclimKeepLocalHistory=1
@@ -760,7 +749,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
             \ 'default' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'php' : 'e:\programs\vim\php_funclist.txt',
             \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
-            \ 'java' : $HOME.'/.vimconfig/engwords-long.txt',
+            \ 'java' : $HOME.'/.vimconfig/jdk.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
             \ 'scheme' : $HOME.'/.gosh_completions'
             \ }

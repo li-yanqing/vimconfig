@@ -106,8 +106,7 @@ Plugin 'JavaDecompiler.vim'
 Plugin 'airblade/vim-rooter'
 
 "Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'msanders/snipmate.vim'
-"Plugin 'Java-Syntax-and-Folding'
+Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
 
 Plugin 'luochen1990/select-and-search'
 
@@ -133,7 +132,6 @@ Plugin 'dw_colors'
 Plugin 'vim-scripts/xoria256.vim'
 Plugin 'Color-Sampler-Pack'
 Plugin 'ScrollColors'
-Plugin 'morhetz/gruvbox'
 Plugin 'tomasr/molokai'
 """----------------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line
@@ -166,7 +164,6 @@ set directory=$TEMP
 set sm "match the { or ( or [
 set ai "auto align
 set sw=4 "tab length
-syntax on 
 set textwidth=0 "maxlength of line
 set conceallevel=2 "for json format
 set autoread "auto load file change
@@ -199,6 +196,7 @@ set autoindent
 
 "Disable q: but let 'q' not quickly
 "map q: <Nop>
+map / /\v
 
 
 " capitalize
@@ -251,7 +249,7 @@ nnoremap <Space> <Esc>viw
 "select more words
 vnoremap <Space> e
 "save file
-nnoremap <Leader>s <Esc>:w<cr>
+nnoremap <Leader>s <Esc>:update<cr>
 "wrap
 nnoremap ;w  :call ToggleWrap()<cr>
 function! ToggleWrap()
@@ -325,6 +323,8 @@ endif
 
 
 "color scheme
+syntax on 
+set background=dark
 colorscheme desert
 "colorscheme desertEx
 "colorscheme molokai
@@ -451,7 +451,7 @@ nnoremap <leader><Leader>fj :python json_line_format_write()<CR>
 nnoremap <leader><Leader>fp :python json_line_format_print()<CR>
 
 "rainbow
-let g:rainbow_active=0
+let g:rainbow_active=1
 
 "SuperTab
 let g:SuperTabRetainCompletionType = 0 
@@ -519,12 +519,12 @@ endfunction
 
 
 "JAVA
-au FileType java call AddJAVAFuncList()
-function! AddJAVAFuncList()
-let g:SuperTabDefaultCompletionType = "<c-x><c-]>"
-set  tags-=~/.vimconfig/jdk-tags
-set  tags+=~/.vimconfig/jdk-tags
-endfunction
+"au FileType java call AddJAVAFuncList()
+"function! AddJAVAFuncList()
+"let g:SuperTabDefaultCompletionType = "<c-x><c-]>"
+"set  tags-=~/.vimconfig/jdk-tags
+"set  tags+=~/.vimconfig/jdk-tags
+"endfunction
 
 "Mark
 map <Leader>mm <Plug>MarkSet
@@ -746,13 +746,6 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '[a-zA-Z]*'
 
-if !exists('g:neocomplete#delimiter_patterns')
-let g:neocomplete#delimiter_patterns= {}
-endif
-let g:neocomplete#delimiter_patterns.java = ['.']
-
-
-
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
@@ -798,8 +791,8 @@ let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 """----------------------------------------------------------------------------------------
-" file is large from 10mb
-let g:LargeFile = 1024 * 1024 * 10
+" file is large from 100mb
+let g:LargeFile = 1024 * 1024 * 100
 augroup LargeFile 
  autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
