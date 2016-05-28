@@ -709,6 +709,13 @@ nnoremap <leader>jsh  <esc>:JavaSearch<cr>
 "nnoremap <leader>jur  <esc>:JUnitResult<cr>
 nnoremap <leader>jh  <esc>:JavaHierarchy<cr>
 
+"for neocomplete
+let g:EclimCompletionMethod = 'omnifunc'
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
+
 """ neosnippets ---------------------------------------------------------------------------------------------------
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)

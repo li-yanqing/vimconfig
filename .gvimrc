@@ -324,7 +324,6 @@ endif
 
 "color scheme
 syntax on 
-set background=dark
 colorscheme desert
 "colorscheme desertEx
 "colorscheme molokai
@@ -335,13 +334,13 @@ colorscheme desert
 "colorscheme calmbreeze
 
 
-au BufReadPost,BufNewFile *.twig colorscheme koehler 
-au BufReadPost,BufNewFile *.css colorscheme slate
-au BufReadPost,BufNewFile *.js colorscheme slate2
-au BufReadPost,BufNewFile *.py colorscheme molokaiyo
-au BufReadPost,BufNewFile *.html colorscheme monokai
-au BufReadPost,BufNewFile *.java colorscheme monokai
-au BufReadPost,BufNewFile *.php colorscheme monokai
+"au BufReadPost,BufNewFile *.twig colorscheme koehler 
+"au BufReadPost,BufNewFile *.css colorscheme slate
+"au BufReadPost,BufNewFile *.js colorscheme slate2
+"au BufReadPost,BufNewFile *.py colorscheme molokaiyo
+"au BufReadPost,BufNewFile *.html colorscheme monokai
+"au BufReadPost,BufNewFile *.java colorscheme monokai
+"au BufReadPost,BufNewFile *.php colorscheme monokai
 
 " Default line highlighting for unknown filetypes
 hi String ctermfg=140
@@ -537,6 +536,7 @@ endfunction
 
 "JAVA
 "au FileType java call AddJAVAFuncList()
+"au FileType java inoremap . .<c-x><c-u>
 "function! AddJAVAFuncList()
 "let g:SuperTabDefaultCompletionType = "<c-x><c-]>"
 "set  tags-=~/.vimconfig/jdk-tags
@@ -713,6 +713,13 @@ nnoremap <leader>jsh  <esc>:JavaSearch<cr>
 "nnoremap <leader>jur  <esc>:JUnitResult<cr>
 nnoremap <leader>jh  <esc>:JavaHierarchy<cr>
 
+"for neocomplete
+let g:EclimCompletionMethod = 'omnifunc'
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
+
 """ neosnippets ---------------------------------------------------------------------------------------------------
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -743,14 +750,14 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 
 " Set minimum syntax keyword length.
-let g:neocomplete#auto_completion_start_length = 4
+let g:neocomplete#auto_completion_start_length = 3
 let g:neocomplete#sources#syntax#min_keyword_length = 4
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 "\ 'default' : '',
 let g:neocomplete#sources#dictionary#dictionaries = {
-            \ 'default' : '',
+            \ 'default' : $HOME.'/.vimconfig/jdk.dict',
             \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'java' : $HOME.'/.vimconfig/jdk.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
