@@ -106,7 +106,6 @@ Plugin 'JavaDecompiler.vim'
 Plugin 'airblade/vim-rooter'
 
 "Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
 
 Plugin 'luochen1990/select-and-search'
 
@@ -133,6 +132,7 @@ Plugin 'vim-scripts/xoria256.vim'
 Plugin 'Color-Sampler-Pack'
 Plugin 'ScrollColors'
 Plugin 'tomasr/molokai'
+Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
 """----------------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -333,6 +333,23 @@ colorscheme desert
 "colorscheme eclipse 
 "colorscheme moria 
 "colorscheme calmbreeze
+
+
+au BufReadPost,BufNewFile *.twig colorscheme koehler 
+au BufReadPost,BufNewFile *.css colorscheme slate
+au BufReadPost,BufNewFile *.js colorscheme slate2
+au BufReadPost,BufNewFile *.py colorscheme molokaiyo
+au BufReadPost,BufNewFile *.html colorscheme monokai
+au BufReadPost,BufNewFile *.java colorscheme monokai
+au BufReadPost,BufNewFile *.php colorscheme monokai
+
+" Default line highlighting for unknown filetypes
+hi String ctermfg=140
+hi CursorLine ctermbg=235
+hi CursorLine guibg=#D3D3D3 cterm=none
+
+let java_highlight_all=1
+
 
 
 "for interface
