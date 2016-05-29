@@ -192,7 +192,7 @@ set autoindent
 ""map <F2> <Esc>:tabprevious<cr>
 ""map <F3> <Esc>:tabnext<cr>
 
-"cat configcustom operation{{{
+"custom operation{{{
 
 "Disable q: but let 'q' not quickly
 "map q: <Nop>
@@ -536,7 +536,6 @@ endfunction
 
 "JAVA
 "au FileType java call AddJAVAFuncList()
-"au FileType java inoremap . .<c-x><c-u>
 "function! AddJAVAFuncList()
 "let g:SuperTabDefaultCompletionType = "<c-x><c-]>"
 "set  tags-=~/.vimconfig/jdk-tags
@@ -761,7 +760,7 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 "\ 'default' : '',
 let g:neocomplete#sources#dictionary#dictionaries = {
-            \ 'default' : $HOME.'/.vimconfig/jdk.dict',
+            \ 'default' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'java' : $HOME.'/.vimconfig/jdk.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',

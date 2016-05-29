@@ -100,7 +100,6 @@ Plugin 'JavaDecompiler.vim'
 
 Plugin 'airblade/vim-rooter'
 
-Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
 
 Plugin 'luochen1990/select-and-search'
 
@@ -130,6 +129,7 @@ Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'zeis/vim-kolor'
 Plugin 'sandeepsinghmails/Dev_Delight'
+Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
 
 """----------------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line
@@ -155,7 +155,7 @@ set relativenumber
 "set encoding=utf-8
 set fileencodings=utf-8,gbk
 set nowrap
-autocmd BufReadPost * set noswapfile
+set noswapfile
 
 set directory=$TEMP
 
@@ -327,7 +327,7 @@ endif
 syntax on 
 "set background=light
 set background=dark
-"colorscheme desert
+colorscheme desert
 "colorscheme desertEx
 "colorscheme desert256
 "colorscheme xoria256 
@@ -336,17 +336,20 @@ set background=dark
 "colorscheme calmbreeze
 
 
-"colorscheme lucius 
-"LuciusDark
+au BufReadPost,BufNewFile *.twig colorscheme koehler 
+au BufReadPost,BufNewFile *.css colorscheme slate
+au BufReadPost,BufNewFile *.js colorscheme slate2
+au BufReadPost,BufNewFile *.py colorscheme molokaiyo
+au BufReadPost,BufNewFile *.html colorscheme monokai
+au BufReadPost,BufNewFile *.java colorscheme monokai
+au BufReadPost,BufNewFile *.php colorscheme monokai
 
-colorscheme molokai
-let g:molokai_original = 1
+" Default line highlighting for unknown filetypes
+hi String ctermfg=140
+hi CursorLine ctermbg=235
+hi CursorLine guibg=#D3D3D3 cterm=none
 
-"colorscheme kolor
-"let g:kolor_italic=1                    " Enable italic. Default: 1
-"let g:kolor_bold=1                      " Enable bold. Default: 1
-"let g:kolor_underlined=1                " Enable underline. Default: 0
-"let g:kolor_alternative_matchparen=1    " Gray 'MatchParen' color. Default: 0
+let java_highlight_all=1
 
 "for interface
 "set guioptions-=T "tool bar
@@ -686,6 +689,10 @@ let g:syntastic_check_on_wq = 0
 "Eclim
 let g:EclimKeepLocalHistory=1
 let g:EclimLoggingDisabled=1
+let g:EclimBuffersDefaultAction='tabnew'
+let g:EclimJavaSearchSingleResult='tabnew'
+let g:EclimDefaultFileOpenAction='tabnew'
+let g:EclimJavaCallHierarchyDefaultAction='tabnew'
 inoremap <m-/> <c-x><c-u>
 cabbrev pcd ProjectCD
 
@@ -746,7 +753,7 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 
 " Set minimum syntax keyword length.
-let g:neocomplete#auto_completion_start_length = 4
+let g:neocomplete#auto_completion_start_length = 3
 let g:neocomplete#sources#syntax#min_keyword_length = 4
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
