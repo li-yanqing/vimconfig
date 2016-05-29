@@ -127,11 +127,11 @@ Plugin 'ujihisa/vimshell-ssh'
 Plugin 'li-yanqing/vim-json-line-format' 
 
 "color
-Plugin 'dw_colors'
-Plugin 'vim-scripts/xoria256.vim'
-Plugin 'Color-Sampler-Pack'
-Plugin 'ScrollColors'
-Plugin 'tomasr/molokai'
+"Plugin 'dw_colors'
+"Plugin 'vim-scripts/xoria256.vim'
+"Plugin 'Color-Sampler-Pack'
+"Plugin 'ScrollColors'
+"Plugin 'tomasr/molokai'
 Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
 """----------------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line
@@ -334,13 +334,13 @@ colorscheme desert
 "colorscheme calmbreeze
 
 
-"au BufReadPost,BufNewFile *.twig colorscheme koehler 
-"au BufReadPost,BufNewFile *.css colorscheme slate
-"au BufReadPost,BufNewFile *.js colorscheme slate2
-"au BufReadPost,BufNewFile *.py colorscheme molokaiyo
-"au BufReadPost,BufNewFile *.html colorscheme monokai
-"au BufReadPost,BufNewFile *.java colorscheme monokai
-"au BufReadPost,BufNewFile *.php colorscheme monokai
+au BufReadPost,BufNewFile *.twig colorscheme koehler 
+au BufReadPost,BufNewFile *.css colorscheme slate
+au BufReadPost,BufNewFile *.js colorscheme slate2
+au BufReadPost,BufNewFile *.py colorscheme molokaiyo
+au BufReadPost,BufNewFile *.html colorscheme monokai
+au BufReadPost,BufNewFile *.java colorscheme monokai
+au BufReadPost,BufNewFile *.php colorscheme monokai
 
 " Default line highlighting for unknown filetypes
 hi String ctermfg=140
