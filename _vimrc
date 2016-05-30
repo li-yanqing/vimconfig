@@ -35,7 +35,7 @@ Plugin 'vim-airline'
 
 Plugin 'matchit.zip'
 Plugin 'YankRing.vim'
-Plugin 'EasyMotion'
+Plugin 'easymotion/vim-easymotion'
 
 Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'terryma/vim-smooth-scroll'
@@ -250,7 +250,7 @@ nnoremap <Space> <Esc>viw
 "select more words
 vnoremap <Space> e
 "save file
-nnoremap <Leader>s <Esc>:update<cr>
+nnoremap <m-s> <Esc>:update<cr>
 "wrap
 nnoremap ;w  :call ToggleWrap()<cr>
 function! ToggleWrap()
@@ -571,11 +571,9 @@ map <Leader>p <Esc>:YRShow<cr>
 let g:yankring_max_history = 100
 
 "EasyMotion
-let g:EasyMotion_leader_key = '<leader>'
-let g:EasyMotion_mapping_j = '<leader>jl'
-let g:EasyMotion_mapping_k = '<leader>kl'
-"let g:EasyMotion_do_mapping = 0
-
+map <Leader> <Plug>(easymotion-prefix)
+"let g:EasyMotion_do_mapping=0
+"nnoremap ww <leader><leader>w
 
 "EasyAlign
 vmap <Enter> <Plug>(EasyAlign)
