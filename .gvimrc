@@ -1,4 +1,5 @@
 let macvim_skip_colorscheme=1
+let gui_macvim=0
 set noimd
 set imi=0
 set ims=0
@@ -235,6 +236,8 @@ nnoremap <leader><leader>be :python base64_encode_append()<CR>
 nnoremap <leader><leader>bd :python base64_decode_append()<CR>
 
 
+nnoremap <D-d> <c-f>
+nnoremap <D-f> <c-b>
 
 nnoremap Y y$
 nnoremap U <Esc>:redo<CR>
@@ -608,13 +611,12 @@ map <Leader>zd <Esc>:DisablePHPFolds<Cr>
 
 
 "CtrlP
+let g:ctrlp_clear_cache_on_exit=0
+let g:ctrlp_open_new_file = 't'
 noremap mm <Esc>:CtrlPMRU<cr>
 noremap mf <Esc>:CtrlP<cr>
 noremap mb <Esc>:CtrlPBuffer<cr>
 nnoremap ;;r <Esc>:CtrlPClearCache<cr>
-let g:ctrlp_clear_cache_on_exit=0
-"let g:ctrlp_user_command = 'ag %s -l --nocolor -g -Q ""'
-"let g:ctrlp_use_caching = 0
 
 "set wildignore=*.o,*.obj
 let g:ctrlp_by_filename = 1
@@ -690,7 +692,7 @@ let g:EclimBuffersDefaultAction='tabnew'
 let g:EclimJavaSearchSingleResult='tabnew'
 let g:EclimDefaultFileOpenAction='tabnew'
 let g:EclimJavaCallHierarchyDefaultAction='tabnew'
-inoremap <m-/> <c-x><c-o>
+inoremap <D-/> <c-x><c-o>
 cabbrev pcd ProjectCD
 
 nnoremap <leader>jdp  <esc>:JavaDocPreview<cr>

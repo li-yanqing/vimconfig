@@ -616,13 +616,12 @@ map <Leader>zd <Esc>:DisablePHPFolds<Cr>
 
 
 "CtrlP
+let g:ctrlp_clear_cache_on_exit=0
+let g:ctrlp_open_new_file = 't'
 noremap mm <Esc>:CtrlPMRU<cr>
 noremap mf <Esc>:CtrlP<cr>
 noremap mb <Esc>:CtrlPBuffer<cr>
 nnoremap ;;r <Esc>:CtrlPClearCache<cr>
-let g:ctrlp_clear_cache_on_exit=0
-"let g:ctrlp_user_command = 'ag %s -l --nocolor -g -Q ""'
-"let g:ctrlp_use_caching = 0
 
 "set wildignore=*.o,*.obj
 let g:ctrlp_by_filename = 1
