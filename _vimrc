@@ -114,6 +114,9 @@ Plugin 'sxinle/vim-log-syntax'
 Plugin 'tfnico/vim-gradle'
 Plugin 'ujihisa/vimshell-ssh'
 
+Plugin 'kana/vim-operator-user'
+Plugin 'rhysd/vim-clang-format'
+
 "Plugin 'vim-scripts/auto_autoread.vim'
 
 Plugin 'chrisbra/vim-diff-enhanced'
@@ -596,6 +599,8 @@ map <Leader>zd <Esc>:DisablePHPFolds<Cr>
 "nmap <silent><unique> <Leader>v<Leader>t <Plug>VimwikiTabMakeDiaryNote
 "let g:vimwiki_table_mappings=0
 
+"vim-clang-format
+vnoremap ff :ClangFormat<cr>
 
 "CtrlP
 let g:ctrlp_clear_cache_on_exit=0
