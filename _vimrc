@@ -691,7 +691,7 @@ let g:EclimBuffersDefaultAction='tabnew'
 let g:EclimJavaSearchSingleResult='tabnew'
 let g:EclimDefaultFileOpenAction='tabnew'
 let g:EclimJavaCallHierarchyDefaultAction='tabnew'
-inoremap <m-/> <c-x><c-u>
+inoremap <m-/> <c-x><c-o>
 cabbrev pcd ProjectCD
 
 nnoremap <leader>jdp  <esc>:JavaDocPreview<cr>
