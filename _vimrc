@@ -121,14 +121,8 @@ Plugin 'chrisbra/vim-diff-enhanced'
 Plugin 'li-yanqing/vim-json-line-format' 
 
 "color
-Plugin 'dw_colors'
-Plugin 'vim-scripts/xoria256.vim'
 Plugin 'Color-Sampler-Pack'
 Plugin 'ScrollColors'
-Plugin 'tomasr/molokai'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'zeis/vim-kolor'
-Plugin 'sandeepsinghmails/Dev_Delight'
 Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
 
 """----------------------------------------------------------------------------------------
@@ -571,9 +565,18 @@ map <Leader>p <Esc>:YRShow<cr>
 let g:yankring_max_history = 100
 
 "EasyMotion
-map <Leader> <Plug>(easymotion-prefix)
-"let g:EasyMotion_do_mapping=0
-"nnoremap ww <leader><leader>w
+let g:EasyMotion_do_mapping=0
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-overwin-f2)
+
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+hi link EasyMotionTarget2First MatchParen
+hi link EasyMotionTarget2Second MatchParen
+hi link EasyMotionMoveHL Search
+
+
+
 
 "EasyAlign
 vmap <Enter> <Plug>(EasyAlign)
@@ -694,6 +697,7 @@ let g:EclimJavaCallHierarchyDefaultAction='tabnew'
 inoremap <m-/> <c-x><c-o>
 cabbrev pcd ProjectCD
 
+nnoremap <leader>jpp  <esc>:ProjectProblems!<cr>
 nnoremap <leader>jdp  <esc>:JavaDocPreview<cr>
 nnoremap <leader>jcr  <esc>:JavaCorrect<cr>
 nnoremap <leader>jrn  <esc>:JavaRename  

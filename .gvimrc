@@ -127,11 +127,8 @@ Plugin 'ujihisa/vimshell-ssh'
 Plugin 'li-yanqing/vim-json-line-format' 
 
 "color
-"Plugin 'dw_colors'
-"Plugin 'vim-scripts/xoria256.vim'
 "Plugin 'Color-Sampler-Pack'
 "Plugin 'ScrollColors'
-"Plugin 'tomasr/molokai'
 Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
 """----------------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line
@@ -693,7 +690,7 @@ let g:EclimBuffersDefaultAction='tabnew'
 let g:EclimJavaSearchSingleResult='tabnew'
 let g:EclimDefaultFileOpenAction='tabnew'
 let g:EclimJavaCallHierarchyDefaultAction='tabnew'
-inoremap <D-/> <c-x><c-u>
+inoremap <m-/> <c-x><c-o>
 cabbrev pcd ProjectCD
 
 nnoremap <leader>jdp  <esc>:JavaDocPreview<cr>
