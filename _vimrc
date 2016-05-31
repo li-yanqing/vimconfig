@@ -73,7 +73,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 
 Plugin 'aquach/vim-http-client'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'Decho'
 "Plugin 'vimshell-ssh'    
 Plugin 'Shougo/vimshell.vim'
@@ -246,6 +246,7 @@ vnoremap <Space> e
 "save file
 nnoremap <m-s> <Esc>:update<cr>
 "wrap
+set showbreak=↪
 nnoremap ;w  :call ToggleWrap()<cr>
 function! ToggleWrap()
     set wrap!
@@ -497,25 +498,6 @@ endfunction
     "let g:SuperTabDefaultCompletionType = "<c-x><c-k>"
 "endfunction
 
-function! RunGroovy()
-    " copy the current buffer file name in a variable
-    let gfname=@%
-    " open a new buffer in my window below
-    botright new
-    " define the buffer to be a mere scratch buffer not intended to be edited or saved
-    setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-    setlocal filetype=groovy
-    " create a temporaty file name to hold the output of the execution of my Groovy script
-    let gtmpf = tempname()
-    " define the command line to launch my Groovy script and retrieve its output in the temporary file
-    let gcmd = ':!groovy ' . gfname . ' > ' . gtmpf
-    echo gfname
-    " execute the groovy command
-    silent execute gcmd
-    " insert the content of the output from the temporary file in my buffer
-    silent execute '0r ' . gtmpf
-endfunction
-nnoremap qg :call RunGroovy()<cr>
 
 
 
@@ -761,7 +743,7 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 "\ 'default' : '',
 let g:neocomplete#sources#dictionary#dictionaries = {
-            \ 'default' : $HOME.'/.vimconfig/engwords-long.txt',
+            \ '_' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'php' : 'e:\programs\vim\php_funclist.txt',
             \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'java' : $HOME.'/.vimconfig/jdk.dict',

@@ -3,7 +3,6 @@ let gui_macvim=0
 set noimd
 set imi=0
 set ims=0
-"inoremap <ESC> <ESC>:set iminsert=0<CR>
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -80,7 +79,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 
 Plugin 'aquach/vim-http-client'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'Decho'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
@@ -195,6 +194,7 @@ set autoindent
 "Disable q: but let 'q' not quickly
 "map q: <Nop>
 map / /\v
+nnoremap Q <nop>
 
 
 " capitalize
@@ -251,6 +251,7 @@ vnoremap <Space> e
 "save file
 nnoremap <D-s> <Esc>:update<cr>
 "wrap
+set showbreak=↪
 nnoremap ;w  :call ToggleWrap()<cr>
 function! ToggleWrap()
     set wrap!
@@ -498,25 +499,6 @@ endfunction
     "let g:SuperTabDefaultCompletionType = "<c-x><c-k>"
 "endfunction
 
-function! RunGroovy()
-    " copy the current buffer file name in a variable
-    let gfname=@%
-    " open a new buffer in my window below
-    botright new
-    " define the buffer to be a mere scratch buffer not intended to be edited or saved
-    setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-    setlocal filetype=groovy
-    " create a temporaty file name to hold the output of the execution of my Groovy script
-    let gtmpf = tempname()
-    " define the command line to launch my Groovy script and retrieve its output in the temporary file
-    let gcmd = ':!groovy ' . gfname . ' > ' . gtmpf
-    echo gfname
-    " execute the groovy command
-    silent execute gcmd
-    " insert the content of the output from the temporary file in my buffer
-    silent execute '0r ' . gtmpf
-endfunction
-nnoremap qg :call RunGroovy()<cr>
 
 
 
@@ -570,6 +552,13 @@ let g:yankring_max_history = 100
 let g:EasyMotion_do_mapping=0
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
+
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+hi link EasyMotionTarget2First MatchParen
+hi link EasyMotionTarget2Second MatchParen
+hi link EasyMotionMoveHL Search
+
 
 
 
@@ -759,7 +748,7 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 "\ 'default' : '',
 let g:neocomplete#sources#dictionary#dictionaries = {
-            \ 'default' : $HOME.'/.vimconfig/engwords-long.txt',
+            \ '_' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'java' : $HOME.'/.vimconfig/jdk.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
