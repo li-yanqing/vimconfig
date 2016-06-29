@@ -108,20 +108,18 @@ Plugin 'Mark'
 Plugin 'itchyny/calendar.vim'
 Plugin 'itchyny/thumbnail.vim'
 
+Plugin 'kana/vim-operator-user'
+Plugin 'rhysd/vim-clang-format'
+
 "filetype log(log4j) and javalog(java exception)
 Plugin 'sxinle/vim-log-syntax'
 
 Plugin 'tfnico/vim-gradle'
 Plugin 'ujihisa/vimshell-ssh'
 
-Plugin 'kana/vim-operator-user'
-Plugin 'rhysd/vim-clang-format'
-
-"Plugin 'vim-scripts/auto_autoread.vim'
-
 Plugin 'chrisbra/vim-diff-enhanced'
-
 Plugin 'li-yanqing/vim-json-line-format' 
+
 
 "color
 Plugin 'Color-Sampler-Pack'
@@ -217,7 +215,7 @@ imap <C-y> <Esc>:tabprevious<cr>
 "format json
 "map <Leader><Leader>fj  !python -m json.tool<CR>
 "format xml
-map <Leader><Leader>fx  V:!xmllint --format --recover - 2>/dev/null <CR>
+map <Leader><Leader>fx  V:!E:/programs/GNU2/xmllint.exe --format --recover - 2>/dev/null <CR>
 
 "remove space 
 map <Leader><Leader>ks  :s/\s\+/ /g<CR>
@@ -249,7 +247,7 @@ vnoremap <Space> e
 "save file
 nnoremap <m-s> <Esc>:update<cr>
 "wrap
-set showbreak=↪
+set showbreak=>
 nnoremap ;w  :call ToggleWrap()<cr>
 function! ToggleWrap()
     set wrap!
@@ -334,18 +332,18 @@ colorscheme desert
 "colorscheme calmbreeze
 
 
-au BufReadPost,BufNewFile *.twig colorscheme koehler 
-au BufReadPost,BufNewFile *.css colorscheme slate
-au BufReadPost,BufNewFile *.js colorscheme slate2
-au BufReadPost,BufNewFile *.py colorscheme molokaiyo
-au BufReadPost,BufNewFile *.html colorscheme monokai
-au BufReadPost,BufNewFile *.java colorscheme monokai
-au BufReadPost,BufNewFile *.php colorscheme monokai
+"au BufReadPost,BufNewFile *.twig colorscheme koehler 
+"au BufReadPost,BufNewFile *.css colorscheme slate
+"au BufReadPost,BufNewFile *.js colorscheme slate2
+"au BufReadPost,BufNewFile *.py colorscheme molokaiyo
+"au BufReadPost,BufNewFile *.html colorscheme monokai
+"au BufReadPost,BufNewFile *.java colorscheme monokai
+"au BufReadPost,BufNewFile *.php colorscheme monokai
 
 " Default line highlighting for unknown filetypes
-hi String ctermfg=140
-hi CursorLine ctermbg=235
-hi CursorLine guibg=#D3D3D3 cterm=none
+"hi String ctermfg=140
+"hi CursorLine ctermbg=235
+"hi CursorLine guibg=#D3D3D3 cterm=none
 
 let java_highlight_all=1
 
@@ -457,7 +455,7 @@ vmap <Leader><Leader>r :QuickRun bash<cr>
 let g:quickrun_config = {}
 let g:quickrun_config.markdown = {
             \ 'type': 'markdown/pandoc',
-            \ 'command' : 'E:/programs/Markdown/MarkdownEditor.exe',
+            \ 'command' : 'C:/Users/Administrator/AppData/Local/Google/Chrome/Application/chrome.exe',
             \ 'exec' : '%c %s',
             \ 'outputter':'null'
             \ }  
@@ -485,13 +483,13 @@ nnoremap <leader>tc :TranClose<CR>
 let g:vim_markdown_folding_disabled = 1
 
 
-"Groovy
-au FileType groovy call AddGroovyFuncList()
-function! AddGroovyFuncList()
-    "execute("NeoCompleteLock")
-    set  tags-=e:\programs\vim\groovy-tags, tags-=e:\programs\vim\groovy-api-tags, tags-=e:\programs\vim\jdk-tags
-    set  tags+=e:\programs\vim\groovy-tags, tags+=e:\programs\vim\groovy-api-tags, tags+=e:\programs\vim\jdk-tags
-endfunction
+""Groovy
+"au FileType groovy call AddGroovyFuncList()
+"function! AddGroovyFuncList()
+    ""execute("NeoCompleteLock")
+    "set  tags-=e:\programs\vim\groovy-tags, tags-=e:\programs\vim\groovy-api-tags, tags-=e:\programs\vim\jdk-tags
+    "set  tags+=e:\programs\vim\groovy-tags, tags+=e:\programs\vim\groovy-api-tags, tags+=e:\programs\vim\jdk-tags
+"endfunction
 
 "Markdown
 "au FileType markdown call MarkdownFile()
@@ -600,7 +598,9 @@ map <Leader>zd <Esc>:DisablePHPFolds<Cr>
 "let g:vimwiki_table_mappings=0
 
 "vim-clang-format
+let g:clang_format#command='e:/programs/clang-format/bin/clang-format.exe'
 vnoremap ff :ClangFormat<cr>
+
 
 "CtrlP
 let g:ctrlp_clear_cache_on_exit=0
@@ -748,10 +748,11 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 "\ 'default' : '',
 let g:neocomplete#sources#dictionary#dictionaries = {
-            \ '_' : $HOME.'/.vimconfig/engwords-long.txt',
+            \ 'default' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'php' : 'e:\programs\vim\php_funclist.txt',
             \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'java' : $HOME.'/.vimconfig/jdk.dict',
+            \ 'groovy' : $HOME.'/.vimconfig/groovy.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
             \ 'scheme' : $HOME.'/.gosh_completions'
             \ }
@@ -827,7 +828,7 @@ function! LargeFile()
 endfunction
 """----------------------------------------------------------------------------------------
 
-source $VIMRUNTIME/vimrc_example.vim
+"source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 

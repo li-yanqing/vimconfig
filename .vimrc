@@ -14,7 +14,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 """----------------------------------------------------------------------------------------
 Plugin 'SuperTab'
-Plugin 'EasyGrep'
+Plugin 'dkprice/vim-easygrep'
 Plugin 'VimExplorer'
 Plugin 'quickrun.vim'
 
@@ -24,8 +24,8 @@ Plugin 'quickrun.vim'
 Plugin 'vim-airline'
 
 Plugin 'matchit.zip'
-"Plugin 'YankRing.vim'
-Plugin 'EasyMotion'
+Plugin 'YankRing.vim'
+Plugin 'easymotion/vim-easymotion'
 
 "Plugin 'terryma/vim-multiple-cursors'
 
@@ -87,9 +87,11 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin on
 let mapleader = ","
-set nu
+set relativenumber
+
+"set encoding=utf-8
 set fileencodings=utf-8,gbk
-set wrap
+set nowrap
 set noswapfile
 
 set directory=$TEMP
@@ -154,8 +156,10 @@ map <Leader><Leader>kP  :s/\\/\\\\/g<CR>
 
 
 "base64 encode
-map <Leader><Leader>be  y<Esc>gv:!base64 <CR>kp
-map <Leader><Leader>bd  !base64 -d -i <CR>
+"map <Leader><Leader>be  y<Esc>gv:!base64 <CR>kp
+"map <Leader><Leader>bd  !base64 -d -i <CR>
+nnoremap <leader><leader>be :python base64_encode_append()<CR>
+nnoremap <leader><leader>bd :python base64_decode_append()<CR>
 
 
 nnoremap <M-d> <c-f>
@@ -171,7 +175,7 @@ nnoremap <Space> <Esc>viw
 "select more words
 vnoremap <Space> e
 "save file
-nnoremap <Leader>s <Esc>:w<cr>
+nnoremap <m-s> <Esc>:update<cr>
 "wrap
 nnoremap ;w  :call ToggleWrap()<cr>
 function! ToggleWrap()
@@ -196,7 +200,7 @@ nnoremap ;r <Esc>:RainbowToggle<cr>
 
 "refresh file
 nnoremap zb <Esc>zfgg<cr>
-nnoremap <Leader>r <Esc>:e!<cr>
+nnoremap <Leader>r <Esc>:checktime<cr>
 
 "folder code block
 nnoremap <Leader><Leader>cc f{zf%
@@ -211,11 +215,12 @@ nmap gc V,r
 map ZZ <nop>
 map <s-Space> <nop>
 
-"for window nav
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-H> <C-W>h
-noremap <C-L> <C-W>l
+
+noremap <C-J> <esc><C-W>j
+noremap <C-K> <esc><C-W>k
+noremap <C-H> <esc><C-W>h
+noremap <C-L> <esc><C-W>l
+
 nmap <c-left> <c-w><
 nmap <c-right> <c-w>>
 nmap <c-up> <c-w>+
@@ -291,8 +296,12 @@ let g:ag_highlight=1
 "EasyGrep
 let g:EasyGrepRecursive = 1
 let g:EasyGrepOpenWindowOnMatch=0
-let g:EasyGrepFilesToExclude = "*.class, *.jar, *.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
-let g:EasyGrepCommand=1
+let g:EasyGrepFilesToExclude = ".git, *.class, *.jar, *.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
+let EasyGrepHidden=1
+let EasyGrepWindow=1
+let EasyGrepJumpToMatch=0
+let g:EasyGrepCommand=0
+
 
 
 
@@ -313,6 +322,8 @@ endfunction
 
 
 
+"numbers.vim
+nnoremap ;n :NumbersToggle<CR>
 
 
 "QuickRun
@@ -338,7 +349,45 @@ let g:rainbow_active=0
 
 "SuperTab
 let g:SuperTabRetainCompletionType = 0 
-"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+"let g:SuperTabDefaultCompletionType = '<c-x><c-u>'
+
+"translator.vim
+nnoremap <leader>tr :TranCursor<CR>
+vnoremap <leader>tr :TranCursor<CR>
+nnoremap <leader>tc :TranClose<CR>
+
+"vim-markdown
+let g:vim_markdown_folding_disabled = 1
+
+
+"Groovy
+au FileType groovy call AddGroovyFuncList()
+function! AddGroovyFuncList()
+    "execute("NeoCompleteLock")
+    set  tags-=e:\programs\vim\groovy-tags, tags-=e:\programs\vim\groovy-api-tags, tags-=e:\programs\vim\jdk-tags
+    set  tags+=e:\programs\vim\groovy-tags, tags+=e:\programs\vim\groovy-api-tags, tags+=e:\programs\vim\jdk-tags
+endfunction
+
+"Markdown
+"au FileType markdown call MarkdownFile()
+"function! MarkdownFile()
+    "set  dictionary-=e:\programs\vim\engwords
+    "set  dictionary+=e:\programs\vim\engwords
+    "let g:SuperTabDefaultCompletionType = "<c-x><c-k>"
+"endfunction
+
+
+
+
+"VimShell
+nnoremap ,,v <Esc>:VimShellPop<cr>
+autocmd FileType vimshell call VimInit()
+function! VimInit()
+    call vimshell#altercmd#define('l', 'll')
+    call vimshell#altercmd#define('ll', 'ls -l')
+    nnoremap <buffer> G <Esc>GA
+endfunction
+
 
 
 
@@ -360,10 +409,17 @@ map <Leader>p <Esc>:YRShow<cr>
 let g:yankring_max_history = 100
 
 "EasyMotion
-let g:EasyMotion_leader_key = '<leader>'
-let g:EasyMotion_mapping_j = '<leader>jl'
-let g:EasyMotion_mapping_k = '<leader>kl'
-"let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_do_mapping=0
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-overwin-f2)
+
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+hi link EasyMotionTarget2First MatchParen
+hi link EasyMotionTarget2Second MatchParen
+hi link EasyMotionMoveHL Search
+
+
 
 
 "EasyAlign
