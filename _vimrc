@@ -194,6 +194,7 @@ set autoindent
 "Disable q: but let 'q' not quickly
 "map q: <Nop>
 map / /\v
+nnoremap Q <nop>
 
 
 " capitalize

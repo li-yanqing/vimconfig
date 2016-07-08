@@ -24,6 +24,7 @@ Plugin 'FuDesign2008/translator.vim'
 
 "Plugin 'The-NERD-tree'
 "Plugin 'mru.vim'
+Plugin 'groovyindent-unix'
 Plugin 'quickrun.vim'
 Plugin 'taglist.vim'
 Plugin 'vim-misc'
@@ -254,7 +255,7 @@ vnoremap <Space> e
 "save file
 nnoremap <D-s> <Esc>:update<cr>
 "wrap
-set showbreak=↪
+set showbreak=>
 nnoremap ;w  :call ToggleWrap()<cr>
 function! ToggleWrap()
     set wrap!
@@ -338,18 +339,18 @@ colorscheme desert
 "colorscheme calmbreeze
 
 
-au BufReadPost,BufNewFile *.twig colorscheme koehler 
-au BufReadPost,BufNewFile *.css colorscheme slate
-au BufReadPost,BufNewFile *.js colorscheme slate2
-au BufReadPost,BufNewFile *.py colorscheme molokaiyo
-au BufReadPost,BufNewFile *.html colorscheme monokai
-au BufReadPost,BufNewFile *.java colorscheme monokai
-au BufReadPost,BufNewFile *.php colorscheme monokai
+"au BufReadPost,BufNewFile *.twig colorscheme koehler 
+"au BufReadPost,BufNewFile *.css colorscheme slate
+"au BufReadPost,BufNewFile *.js colorscheme slate2
+"au BufReadPost,BufNewFile *.py colorscheme molokaiyo
+"au BufReadPost,BufNewFile *.html colorscheme monokai
+"au BufReadPost,BufNewFile *.java colorscheme monokai
+"au BufReadPost,BufNewFile *.php colorscheme monokai
 
 " Default line highlighting for unknown filetypes
-hi String ctermfg=140
-hi CursorLine ctermbg=235
-hi CursorLine guibg=#D3D3D3 cterm=none
+"hi String ctermfg=140
+"hi CursorLine ctermbg=235
+"hi CursorLine guibg=#D3D3D3 cterm=none
 
 let java_highlight_all=1
 
@@ -486,13 +487,13 @@ nnoremap <leader>tc :TranClose<CR>
 let g:vim_markdown_folding_disabled = 1
 
 
-"Groovy
-au FileType groovy call AddGroovyFuncList()
-function! AddGroovyFuncList()
-    "execute("NeoCompleteLock")
-    set  tags-=e:\programs\vim\groovy-tags, tags-=e:\programs\vim\groovy-api-tags, tags-=e:\programs\vim\jdk-tags
-    set  tags+=e:\programs\vim\groovy-tags, tags+=e:\programs\vim\groovy-api-tags, tags+=e:\programs\vim\jdk-tags
-endfunction
+""Groovy
+"au FileType groovy call AddGroovyFuncList()
+"function! AddGroovyFuncList()
+    ""execute("NeoCompleteLock")
+    "set  tags-=e:\programs\vim\groovy-tags, tags-=e:\programs\vim\groovy-api-tags, tags-=e:\programs\vim\jdk-tags
+    "set  tags+=e:\programs\vim\groovy-tags, tags+=e:\programs\vim\groovy-api-tags, tags+=e:\programs\vim\jdk-tags
+"endfunction
 
 "Markdown
 "au FileType markdown call MarkdownFile()
@@ -552,7 +553,8 @@ map <Leader>p <Esc>:YRShow<cr>
 let g:yankring_max_history = 100
 
 "EasyMotion
-let g:EasyMotion_do_mapping=0
+map <Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 1
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 
@@ -756,6 +758,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
             \ '_' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'java' : $HOME.'/.vimconfig/jdk.dict',
+            \ 'groovy' : $HOME.'/.vimconfig/groovy.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
             \ 'scheme' : $HOME.'/.gosh_completions'
             \ }
