@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set eb vb t_vb=
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vimconfig/vundle/
@@ -18,6 +19,7 @@ Plugin 'FuDesign2008/translator.vim'
 
 "Plugin 'The-NERD-tree'
 "Plugin 'mru.vim'
+Plugin 'groovyindent-unix'
 Plugin 'quickrun.vim'
 Plugin 'taglist.vim'
 Plugin 'vim-misc'
@@ -548,7 +550,8 @@ map <Leader>p <Esc>:YRShow<cr>
 let g:yankring_max_history = 100
 
 "EasyMotion
-let g:EasyMotion_do_mapping=0
+map <Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 1
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 
@@ -753,6 +756,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
             \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'java' : $HOME.'/.vimconfig/jdk.dict',
             \ 'groovy' : $HOME.'/.vimconfig/groovy.dict',
+            \ 'gradle' : $HOME.'/.vimconfig/gradle.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
             \ 'scheme' : $HOME.'/.gosh_completions'
             \ }
