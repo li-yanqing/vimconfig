@@ -748,14 +748,14 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 
 " Set minimum syntax keyword length.
-let g:neocomplete#auto_completion_start_length = 3
-let g:neocomplete#sources#syntax#min_keyword_length = 4
+let g:neocomplete#auto_completion_start_length = 4
+let g:neocomplete#sources#syntax#min_keyword_length = 5
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 "\ 'default' : '',
 let g:neocomplete#sources#dictionary#dictionaries = {
-            \ '_' : $HOME.'/.vimconfig/engwords-long.txt',
+            \ 'default_' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'java' : $HOME.'/.vimconfig/jdk.dict',
             \ 'groovy' : $HOME.'/.vimconfig/groovy.dict',
