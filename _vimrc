@@ -456,6 +456,12 @@ nnoremap ;n :NumbersToggle<CR>
 nmap <Leader><Leader>r <Esc>:QuickRun<cr>
 vmap <Leader><Leader>r :QuickRun bash<cr>
 let g:quickrun_config = {}
+let g:quickrun_config.groovy = {
+            \ 'type': 'groovy',
+            \ 'command' : 'groovyclient',
+            \ 'exec' : '%c %s',
+            \ 'outputter':'buffer'
+            \ }  
 let g:quickrun_config.markdown = {
             \ 'type': 'markdown/pandoc',
             \ 'command' : 'C:/Users/Administrator/AppData/Local/Google/Chrome/Application/chrome.exe',
@@ -506,7 +512,7 @@ let g:vim_markdown_folding_disabled = 1
 
 
 "VimShell
-nnoremap ,,v <Esc>:VimShellPop<cr>
+nnoremap ,,v <Esc>:VimShellCreate<cr>
 autocmd FileType vimshell call VimInit()
 function! VimInit()
     call vimshell#altercmd#define('l', 'll')
@@ -603,7 +609,10 @@ map <Leader>zd <Esc>:DisablePHPFolds<Cr>
 
 "vim-clang-format
 let g:clang_format#command='e:/programs/clang-format/bin/clang-format.exe'
-vnoremap ff :ClangFormat<cr>
+"vnoremap ff :ClangFormat<cr>
+
+"format =
+noremap ff vip=
 
 
 "CtrlP
