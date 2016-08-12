@@ -765,7 +765,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
             \ 'php' : 'e:\programs\vim\php_funclist.txt',
             \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'java' : $HOME.'/.vimconfig/jdk.dict',
-            \ 'groovy' : $HOME.'/.vimconfig/groovy.dict'.','.$HOME.'/.vimconfig/javafx.dict',
+            \ 'groovy' : $HOME.'/.vimconfig/groovy.dict,'.$HOME.'/.vimconfig/javafx.dict,'.$HOME.'/.vimconfig/vds.dict',
             \ 'gradle' : $HOME.'/.vimconfig/gradle.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
             \ 'scheme' : $HOME.'/.gosh_completions'
