@@ -270,6 +270,9 @@ nnoremap  <Leader>gl  <esc>:vimgrep! /start \w\+Transform/ %:p<cr>:copen<cr>
 
 
 "color scheme
+syntax on 
+"set background=light
+set background=dark
 colorscheme desert
 "colorscheme desertEx
 "colorscheme desert256 
@@ -367,6 +370,12 @@ nnoremap ;n :NumbersToggle<CR>
 nmap <Leader>r <Esc>:QuickRun<cr>
 vmap <Leader>r :QuickRun bash<cr>
 let g:quickrun_config = {}
+let g:quickrun_config.groovy = {
+            \ 'type': 'groovy',
+            \ 'command' : 'groovyclient',
+            \ 'exec' : '%c %s',
+            \ 'outputter':'buffer'
+            \ }  
 let g:quickrun_config.markdown = {
             \ 'type': 'markdown/pandoc',
             \ 'command' : 'E:/programs/Markdown/MarkdownEditor.exe',
@@ -443,6 +452,7 @@ map <Leader>mr <Plug>MarkRegex
 "Rooter 
 let g:rooter_use_lcd = 1 " local buffer change 
 let g:rooter_silent_chdir = 0 "quietly change dir
+let g:rooter_manual_only = 0 "don't auto change to root directory
 map <silent> <Leader>cd <Plug>RooterChangeToRootDirectory
 map  <Leader>ce <Esc>:set autochdir<cr>
 map  ;ce <Esc>:set noautochdir<cr>
@@ -475,7 +485,11 @@ nmap ga <Plug>(EasyAlign)
 
 
 
+"format =
+noremap ff vip=
 "CtrlP
+let g:ctrlp_clear_cache_on_exit=0
+let g:ctrlp_open_new_file = 't'
 noremap mm <Esc>:CtrlPMRU<cr>
 noremap mf <Esc>:CtrlP<cr>
 noremap mb <Esc>:CtrlPBuffer<cr>
@@ -494,6 +508,37 @@ let g:ctrlp_custom_ignore = {
 
 
 
+"Unite
+nmap <Leader>l  <esc>:Unite outline<cr><esc>:sleep 100 m<cr>i
+
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+""" neosnippets ---------------------------------------------------------------------------------------------------
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+"""---------------------------------------------------------------------------------------------------
+
 """---------------------------------------------------------------------------------------------------
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -503,6 +548,7 @@ let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
+let g:neocomplete#auto_completion_start_length = 3
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
@@ -510,7 +556,12 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplete#sources#dictionary#dictionaries = {
             \ 'default' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'php' : 'e:\programs\vim\php_funclist.txt',
+            \ 'markdown' : $HOME.'/.vimconfig/engwords-long.txt',
+            \ 'java' : $HOME.'/.vimconfig/jdk.dict',
+            \ 'groovy' : $HOME.'/.vimconfig/groovy.dict,'.$HOME.'/.vimconfig/javafx.dict,'.$HOME.'/.vimconfig/vds.dict',
+            \ 'gradle' : $HOME.'/.vimconfig/gradle.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'python' : $HOME.'/.vimconfig/python.dict',
             \ 'scheme' : $HOME.'/.gosh_completions'
             \ }
 
