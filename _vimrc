@@ -115,12 +115,15 @@ Plugin 'rhysd/vim-clang-format'
 
 "filetype log(log4j) and javalog(java exception)
 Plugin 'sxinle/vim-log-syntax'
+Plugin 'hdima/python-syntax'
 
 Plugin 'tfnico/vim-gradle'
 Plugin 'ujihisa/vimshell-ssh'
 
 Plugin 'chrisbra/vim-diff-enhanced'
 Plugin 'li-yanqing/vim-json-line-format' 
+
+
 
 
 "color
@@ -274,7 +277,6 @@ nnoremap ;r <Esc>:RainbowToggle<cr>
 
 "refresh file
 nnoremap zb <Esc>zfgg<cr>
-nnoremap <Leader>r <Esc>:checktime<cr>
 
 "folder code block
 nnoremap <Leader><Leader>cc f{zf%
@@ -453,8 +455,8 @@ nnoremap ;n :NumbersToggle<CR>
 
 
 "QuickRun
-nmap <Leader><Leader>r <Esc>:QuickRun<cr>
-vmap <Leader><Leader>r :QuickRun bash<cr>
+nmap <Leader>r <Esc>:QuickRun<cr>
+vmap <Leader>r :QuickRun bash<cr>
 let g:quickrun_config = {}
 let g:quickrun_config.groovy = {
             \ 'type': 'groovy',
@@ -491,6 +493,12 @@ nnoremap <leader>tc :TranClose<CR>
 "vim-markdown
 let g:vim_markdown_folding_disabled = 1
 
+"Python
+au FileType python call Python_init()
+function! Python_init()
+    set foldmethod=indent
+    set foldlevel=99
+endfunction
 
 ""Groovy
 "au FileType groovy call AddGroovyFuncList()
@@ -755,7 +763,7 @@ let g:neocomplete#enable_smart_case = 1
 
 " Set minimum syntax keyword length.
 let g:neocomplete#auto_completion_start_length = 3
-let g:neocomplete#sources#syntax#min_keyword_length = 4
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
@@ -768,6 +776,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
             \ 'groovy' : $HOME.'/.vimconfig/groovy.dict,'.$HOME.'/.vimconfig/javafx.dict,'.$HOME.'/.vimconfig/vds.dict',
             \ 'gradle' : $HOME.'/.vimconfig/gradle.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'python' : $HOME.'/.vimconfig/python.dict',
             \ 'scheme' : $HOME.'/.gosh_completions'
             \ }
 
