@@ -107,8 +107,8 @@ Plugin 'luochen1990/select-and-search'
 
 Plugin 'Mark'
 
-Plugin 'itchyny/calendar.vim'
-Plugin 'itchyny/thumbnail.vim'
+"Plugin 'itchyny/calendar.vim'
+"Plugin 'itchyny/thumbnail.vim'
 
 Plugin 'kana/vim-operator-user'
 Plugin 'rhysd/vim-clang-format'

@@ -31,43 +31,75 @@ Plugin 'easymotion/vim-easymotion'
 
 "Plugin 'rking/ag.vim'
 
-"Plugin 'AutoClose'
-"Plugin 'vim-easy-align'
+Plugin 'vim-easy-align'
 "Plugin 'HTML-AutoCloseTag'
+"Plugin 'DBGPavim'
 Plugin 'L9'
+Plugin 'phpfolding.vim'
+"Plugin 'FuzzyFinder'
+"Plugin 'ShowMarks'
 "Plugin 'VOoM'
+Plugin 'SearchComplete'
+"Plugin 'vimwiki'
+Plugin 'tpope/vim-repeat'
 Plugin 'jsbeautify'
-"Plugin 'surround.vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'surround.vim'
+"Plugin 'Quramy/vison'
+
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/unite-outline'
+
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+
+
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+
+"Plugin 'aquach/vim-http-client'
+Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'Decho'
 "Plugin 'vimshell-ssh'    
-"Plugin 'Shougo/vimshell.vim'
-"Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimproc.vim'
 
 Plugin 'VisIncr'
 Plugin 'auto_mkdir'
 
 "Plugin 'Markdown-syntax'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 "Plugin 'xml.vim'
 Plugin 'The-NERD-Commenter'
-"Plugin 'luochen1990/rainbow'
+Plugin 'luochen1990/rainbow'
+
+Plugin 'Gundo'
+
+"Plugin 'mikelue/vim-maven-plugin'
+
+"Plugin 'JavaDecompiler.vim'
+
 Plugin 'airblade/vim-rooter'
 Plugin 'luochen1990/select-and-search'
 Plugin 'Mark'
 "filetype log(log4j) and javalog(java exception)
 Plugin 'sxinle/vim-log-syntax'
+Plugin 'hdima/python-syntax'
 
-
-"Plugin 'vim-scripts/auto_autoread.vim'
+"Plugin 'tfnico/vim-gradle'
+"Plugin 'ujihisa/vimshell-ssh'
 
 "Plugin 'chrisbra/vim-diff-enhanced'
-
 Plugin 'li-yanqing/vim-json-line-format' 
 
+
 "color
-Plugin 'dw_colors'
+"Plugin 'dw_colors'
 Plugin 'Color-Sampler-Pack'
 Plugin 'ScrollColors'
+Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
+
 """----------------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -99,11 +131,14 @@ set directory=$TEMP
 set sm "match the { or ( or [
 set ai "auto align
 set sw=4 "tab length
-syntax on 
 set textwidth=0 "maxlength of line
+set conceallevel=2 "for json format
 set autoread "auto load file change
 
 set nobackup "don't backup file
+set undofile  "Open Persistent Undo
+set undodir=$HOME/\_undodir
+set undolevels=1000  "how many operation could be undone
 
 set tabstop=4 "tab to space
 set expandtab
@@ -126,14 +161,14 @@ set ignorecase smartcase
 
 "Disable q: but let 'q' not quickly
 "map q: <Nop>
+map / /\v
+nnoremap Q <nop>
 
 
 " capitalize
 inoremap <c-j> <Esc>mzb~`za
 
 
-"nnoremap mx <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
-map <c-F11> <C-W>_<C-W><Bar>
 noremap <Leader>q <Esc>:q<cr>
 noremap <Leader><leader>q <Esc>:tabclose<cr>
 noremap <Leader>Q <Esc>:q!<cr>
@@ -200,7 +235,6 @@ nnoremap ;r <Esc>:RainbowToggle<cr>
 
 "refresh file
 nnoremap zb <Esc>zfgg<cr>
-nnoremap <Leader>r <Esc>:checktime<cr>
 
 "folder code block
 nnoremap <Leader><Leader>cc f{zf%
@@ -268,16 +302,19 @@ set number
 " highlight search result
 set hlsearch
 
+"Gundo
+set undofile
+set undodir=$HOME/_gundo/
+noremap ,u <esc>:GundoToggle<cr>
 
 
 
 "Ag
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-endif
+"if executable('ag')
+    "" Use Ag over Grep
+    "set grepprg=ag\ --nogroup\ --nocolor
+"endif
 "configure ag.vim to always start searching from your project root instead of the cwd
-let g:ag_prg="ag --vimgrep --smart-case"
 let g:ag_working_path_mode="r"
 let g:ag_highlight=1
 "nnoremap <silent> <Leader>vv  <Esc>:Ag <cword><cr>
@@ -327,8 +364,8 @@ nnoremap ;n :NumbersToggle<CR>
 
 
 "QuickRun
-nmap <Leader><Leader>r <Esc>:QuickRun<cr>
-vmap <Leader><Leader>r :QuickRun bash<cr>
+nmap <Leader>r <Esc>:QuickRun<cr>
+vmap <Leader>r :QuickRun bash<cr>
 let g:quickrun_config = {}
 let g:quickrun_config.markdown = {
             \ 'type': 'markdown/pandoc',
@@ -345,7 +382,7 @@ nnoremap <leader><Leader>fj :python json_line_format_write()<CR>
 nnoremap <leader><Leader>fp :python json_line_format_print()<CR>
 
 "rainbow
-let g:rainbow_active=0
+let g:rainbow_active=1
 
 "SuperTab
 let g:SuperTabRetainCompletionType = 0 
@@ -359,14 +396,20 @@ nnoremap <leader>tc :TranClose<CR>
 "vim-markdown
 let g:vim_markdown_folding_disabled = 1
 
+"Python
+au FileType python call Python_init()
+function! Python_init()
+    set foldmethod=indent
+    set foldlevel=99
+endfunction
 
 "Groovy
-au FileType groovy call AddGroovyFuncList()
-function! AddGroovyFuncList()
-    "execute("NeoCompleteLock")
-    set  tags-=e:\programs\vim\groovy-tags, tags-=e:\programs\vim\groovy-api-tags, tags-=e:\programs\vim\jdk-tags
-    set  tags+=e:\programs\vim\groovy-tags, tags+=e:\programs\vim\groovy-api-tags, tags+=e:\programs\vim\jdk-tags
-endfunction
+"au FileType groovy call AddGroovyFuncList()
+"function! AddGroovyFuncList()
+    ""execute("NeoCompleteLock")
+    "set  tags-=e:\programs\vim\groovy-tags, tags-=e:\programs\vim\groovy-api-tags, tags-=e:\programs\vim\jdk-tags
+    "set  tags+=e:\programs\vim\groovy-tags, tags+=e:\programs\vim\groovy-api-tags, tags+=e:\programs\vim\jdk-tags
+"endfunction
 
 "Markdown
 "au FileType markdown call MarkdownFile()
@@ -380,7 +423,7 @@ endfunction
 
 
 "VimShell
-nnoremap ,,v <Esc>:VimShellPop<cr>
+nnoremap ,,v <Esc>:VimShellCreate<cr>
 autocmd FileType vimshell call VimInit()
 function! VimInit()
     call vimshell#altercmd#define('l', 'll')
@@ -409,7 +452,8 @@ map <Leader>p <Esc>:YRShow<cr>
 let g:yankring_max_history = 100
 
 "EasyMotion
-let g:EasyMotion_do_mapping=0
+map <Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 1
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 
@@ -436,9 +480,6 @@ noremap mm <Esc>:CtrlPMRU<cr>
 noremap mf <Esc>:CtrlP<cr>
 noremap mb <Esc>:CtrlPBuffer<cr>
 nnoremap ;;r <Esc>:CtrlPClearCache<cr>
-let g:ctrlp_clear_cache_on_exit=0
-"let g:ctrlp_user_command = 'ag %s -l --nocolor -g -Q ""'
-"let g:ctrlp_use_caching = 0
 
 "set wildignore=*.o,*.obj
 let g:ctrlp_by_filename = 1
@@ -447,14 +488,9 @@ let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_regexp = 0
 let g:ctrlp_mruf_max=1000
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|target)$',
-  \ 'file': '\v\.(exe|so|dll|jpg|png|jpeg)$',
-  \ }
-
-
-
-
-
+            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|target)$',
+            \ 'file': '\v\.(exe|so|dll|jpg|png|jpeg)$',
+            \ }
 
 
 
@@ -472,7 +508,7 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-            \ 'default' : '',
+            \ 'default' : $HOME.'/.vimconfig/engwords-long.txt',
             \ 'php' : 'e:\programs\vim\php_funclist.txt',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
             \ 'scheme' : $HOME.'/.gosh_completions'
@@ -482,7 +518,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+let g:neocomplete#keyword_patterns['default'] = '[a-zA-Z]*'
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
@@ -503,12 +539,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 "inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 "inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
+inoremap <expr><C-y> neocomplete#cancel_popup()
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
@@ -532,8 +563,8 @@ let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 """----------------------------------------------------------------------------------------
-" file is large from 200mb
-let g:LargeFile = 1024 * 1024 * 200
+" file is large from 100mb
+let g:LargeFile = 1024 * 1024 * 100
 augroup LargeFile 
  autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
