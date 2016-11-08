@@ -526,6 +526,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exe = 'python3'
+let g:syntastic_python_flake8_args = ['-m', 'flake8']
 """ neosnippets ---------------------------------------------------------------------------------------------------
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
