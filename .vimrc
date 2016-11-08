@@ -370,6 +370,12 @@ nnoremap ;n :NumbersToggle<CR>
 nmap <Leader>r <Esc>:QuickRun<cr>
 vmap <Leader>r :QuickRun bash<cr>
 let g:quickrun_config = {}
+let g:quickrun_config.python = {
+            \ 'type': 'python',
+            \ 'command' : 'python3',
+            \ 'exec' : '%c %s',
+            \ 'outputter':'buffer'
+            \ }
 let g:quickrun_config.groovy = {
             \ 'type': 'groovy',
             \ 'command' : 'groovyclient',
@@ -519,6 +525,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exe = 'python3'
 """ neosnippets ---------------------------------------------------------------------------------------------------
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
