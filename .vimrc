@@ -55,7 +55,7 @@ Plugin 'Shougo/neosnippet-snippets'
 
 
 Plugin 'majutsushi/tagbar'
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
 "Plugin 'aquach/vim-http-client'
 Plugin 'ctrlpvim/ctrlp.vim'
