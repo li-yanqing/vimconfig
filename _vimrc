@@ -116,6 +116,7 @@ Plugin 'rhysd/vim-clang-format'
 "filetype log(log4j) and javalog(java exception)
 Plugin 'sxinle/vim-log-syntax'
 Plugin 'hdima/python-syntax'
+Plugin 'davidhalter/jedi-vim'
 
 Plugin 'tfnico/vim-gradle'
 Plugin 'ujihisa/vimshell-ssh'
@@ -455,8 +456,8 @@ nnoremap ;n :NumbersToggle<CR>
 
 
 "QuickRun
-nmap <Leader>r <Esc>:QuickRun<cr>
-vmap <Leader>r :QuickRun bash<cr>
+nmap <leader><Leader>r <Esc>:QuickRun<cr>
+vmap <leader><Leader>r :QuickRun bash<cr>
 let g:quickrun_config = {}
 let g:quickrun_config.groovy = {
             \ 'type': 'groovy',
@@ -495,10 +496,19 @@ let g:vim_markdown_folding_disabled = 1
 
 "Python
 au FileType python call Python_init()
+autocmd FileType python setlocal omnifunc=jedi#completions
 function! Python_init()
     set foldmethod=indent
     set foldlevel=99
 endfunction
+"jedi
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+
 
 ""Groovy
 "au FileType groovy call AddGroovyFuncList()
@@ -817,7 +827,8 @@ inoremap <expr><C-y> neocomplete#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"use jedi instead
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 

@@ -86,6 +86,7 @@ Plugin 'Mark'
 "filetype log(log4j) and javalog(java exception)
 Plugin 'sxinle/vim-log-syntax'
 Plugin 'hdima/python-syntax'
+Plugin 'davidhalter/jedi-vim'
 
 "Plugin 'tfnico/vim-gradle'
 "Plugin 'ujihisa/vimshell-ssh'
@@ -413,10 +414,18 @@ let g:vim_markdown_folding_disabled = 1
 
 "Python
 au FileType python call Python_init()
+autocmd FileType python setlocal omnifunc=jedi#completions
 function! Python_init()
     set foldmethod=indent
     set foldlevel=99
 endfunction
+"jedi
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
 "Groovy
 "au FileType groovy call AddGroovyFuncList()
