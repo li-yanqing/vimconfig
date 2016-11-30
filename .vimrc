@@ -368,8 +368,8 @@ nnoremap ;n :NumbersToggle<CR>
 
 
 "QuickRun
-nmap <Leader>r <Esc>:QuickRun<cr>
-vmap <Leader>r :QuickRun bash<cr>
+nmap <Leader><Leader>r <Esc>:QuickRun<cr>
+vmap <Leader><Leader>r :QuickRun bash<cr>
 let g:quickrun_config = {}
 let g:quickrun_config.python = {
             \ 'type': 'python',
