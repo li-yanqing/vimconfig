@@ -11,7 +11,7 @@ if has("gui")
   map <m-v> "+p
   map <m-x> "+d
   cmap <m-v> <C-R>+
-  "noremap <LeftRelease> "+y<LeftRelease>
+  noremap <LeftRelease> "+y<LeftRelease>
   "nnoremap <2-LeftMouse> "+y
 endif
 
@@ -57,7 +57,7 @@ Plugin 'easymotion/vim-easymotion'
 
 
 Plugin 'mileszs/ack.vim'
-Plugin 'gorkunov/smartgf.vim'
+"Plugin 'gorkunov/smartgf.vim'
 
 
 Plugin 'dhruvasagar/vim-table-mode'
@@ -134,7 +134,6 @@ Plugin 'chrisbra/vim-diff-enhanced'
 "Plugin 'li-yanqing/vim-json-line-format' 
 
 
-"Plugin 'chrisbra/vim-diff-enhanced'
 
 
 "color
@@ -503,6 +502,9 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 
+"Deol
+let g:deol#prompt_pattern = '$'
+
 
 
 
@@ -520,10 +522,13 @@ let g:ctrlp_open_new_file = 't'
 noremap mm <Esc>:CtrlPMRU<cr>
 noremap mf <Esc>:CtrlP<cr>
 noremap mb <Esc>:CtrlPBuffer<cr>
+noremap mp <Esc>:CtrlPTag<cr>
 nnoremap ;;r <Esc>:CtrlPClearCache<cr>
 "CtrlP Funky
 nnoremap mo :CtrlPFunky<Cr>
 let g:ctrlp_funky_syntax_highlight = 1
+
+
 
 "set wildignore=*.o,*.obj
 let g:ctrlp_by_filename = 1
@@ -540,6 +545,14 @@ let g:ctrlp_custom_ignore = {
 
 "Unite
 nmap <Leader>l  <esc>:Unite outline<cr><esc>:sleep 100 m<cr>i
+
+" fortran.vim
+"let fortran_free_source=0
+let fortran_have_tabs=0
+"let fortran_more_precise=1
+"let fortran_do_enddo=1
+"au BufNewFile,BufRead *.i set filetype=fortran
+autocmd BufNewFile,BufRead *.i   set syntax=fortran
 
 "syntastic
 set statusline+=%#warningmsg#
